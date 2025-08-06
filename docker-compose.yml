@@ -1,0 +1,28 @@
+services:
+  client:
+    container_name: client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "80:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+  server:
+    container_name: server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+      x-bake:
+        platforms:
+          - linux/amd64
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - DOCKER_BUILDKIT=1
+    env_file:
+      - ./server/.env
+    restart: unless-stopped
