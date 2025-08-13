@@ -9,7 +9,6 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import { menuApi, menuKeys, sortMenus } from "@/lib/api/menu";
-import { Menu } from "@/types/api";
 import { MenuApiResponse } from "@/types/api-response"; // 올바른 경로에서 import
 import ChemistrySection from "../sections/ChemistrySection";
 import CompanySection from "../sections/CompanySection";
@@ -48,7 +47,6 @@ function AppContent() {
   const statsRef = useRef<HTMLDivElement>(null);
   const section4CardsRef = useRef<HTMLDivElement>(null);
   const companyCardsRef = useRef<HTMLDivElement>(null);
-  const lastScrollTime = useRef(Date.now());
 
   // CMS에서 메뉴 데이터 가져오기 (주석 처리)
   const { data: menuResponse, isError } = useQuery<MenuApiResponse>({

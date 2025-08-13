@@ -200,7 +200,7 @@ export const Header = memo(function Header({
                 >
                   <Box>
                     <Image
-                      src="/images/logo/logo.png"
+                      src="/images/logo/logo2.png"
                       width={logoWidth}
                       height={logoHeight}
                       alt="logo"

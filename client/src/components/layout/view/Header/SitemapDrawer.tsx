@@ -154,7 +154,7 @@ export const SitemapDrawer = memo(
                       src={
                         isDark
                           ? "/images/logo/logo_w.png"
-                          : "/images/logo/logo.png"
+                          : "/images/logo/logo2.png"
                       }
                       width={width}
                       height={height}
