@@ -7,7 +7,6 @@ import {
   Drawer,
   Portal,
   VStack,
-  HStack,
   Text as ChakraText,
   Button,
 } from "@chakra-ui/react";
@@ -15,12 +14,7 @@ import Image from "next/image";
 import { memo, useState, useEffect, useCallback } from "react";
 import NextLink from "next/link";
 import { Menu } from "@/types/api";
-import {
-  X as LargeCloseIcon,
-  User2Icon,
-  LogOutIcon,
-  ChevronDown,
-} from "lucide-react";
+import { X as LargeCloseIcon, ChevronDown } from "lucide-react";
 import { useRecoilValue } from "recoil";
 import { authState, useAuthActions } from "@/stores/auth";
 import { useRouter } from "next/navigation";
