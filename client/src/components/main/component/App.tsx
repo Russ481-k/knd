@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Box } from "@chakra-ui/react";
-import { Header } from "@/components/layout/view/Header/Header";
 import HeroSlider from "./HeroSlider";
 import {
   QueryClient,
@@ -204,7 +203,6 @@ function AppContent() {
 
   return (
     <Box className="app">
-      <Header currentPage="메인" menus={sortedMenus} isPreview={false} />
       <HeroSlider />
 
       <ChemistrySection
