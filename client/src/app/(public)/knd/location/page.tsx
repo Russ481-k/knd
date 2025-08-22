@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Text, Heading, Grid, Stack, Container } from "@chakra-ui/react";
+import { Box, Text, Heading, Grid, Stack } from "@chakra-ui/react";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { PageHeroBanner } from "@/components/sections/PageHeroBanner";
 import React, { useState, useEffect } from "react";

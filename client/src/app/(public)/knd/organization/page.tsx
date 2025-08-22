@@ -4,11 +4,7 @@ import {
   Box,
   Text,
   Heading,
-  Grid,
-  GridItem,
-  SimpleGrid,
   Stack,
-  Container,
   Image,
 } from "@chakra-ui/react";
 import { PageContainer } from "@/components/layout/PageContainer";
