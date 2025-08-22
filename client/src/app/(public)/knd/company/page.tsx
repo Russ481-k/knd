@@ -99,7 +99,7 @@ export default function CompanyPage() {
             <Text
               fontSize={{ base: "14px", lg: "20px", xl: "24px" }}
               mb={5}
-              textAlign="center"
+              textAlign="justify"
               transition="all 0.8s ease 0.4s"
               transform={
                 animations.description ? "translateY(0)" : "translateY(50px)"
@@ -110,6 +110,14 @@ export default function CompanyPage() {
               친환경미래선도를 위한 혁신적인 에너지 솔루션을 제공합니다.  <Box as="br" display={{ base: "none", md: "none", lg: "block" }} />
               우리는 수소의 생산부터 공급까지 전과정에서 최고의 기술력과
               안전성을 바탕으로 고객에게 신뢰받는 파트너가 되고자 합니다.
+              <Box as="br" /><Box as="br" />
+              케이앤디에너젠㈜은 산업용 가스 분야의 전문기업인 ㈜덕양에너젠과 특수윤활유 전문기업인 극동유화㈜가 공동으로 출자하여 2023년 2월 21일에 설립된 기업입니다.
+              특히 친환경 수소 제조업에 특화된 기업으로, 시간당 최대 92,000 N㎥의 수소를 생산할 수 있는 단일 시설 기준 국내 최대 규모의 수소 생산 시설을 운영하고 있습니다.
+              2023년 12월에는 울산광역시와 MOU를 체결하였으며, 2024년 2월에는 에쓰오일㈜과 Shaheen Project 수소 공급 관련 계약을 체결하였습니다.
+              <Box as="br" /><Box as="br" />
+              케이앤디에너젠㈜은 울산에 본사를 두고 있는 지역 향토 기업으로, 울산의 수소 경제 및 친환경 미래 선도 도시 발전에 기여하고 있습니다.
+              또한 국내 최대 규모의 수소 생산 시설을 통해 에너지 전환의 선두에서 울산은 물론 대한민국의 미래 산업 기반을 새롭게 그려가고 있습니다.
+              혁신과 친환경의 명확한 비전을 품고 안정성과 지속 가능성을 동시에 지향하는 케이앤디에너젠㈜은 친환경 수소 경제 시대의 새로운 이정표가 될 것입니다.
             </Text>
 
             {/* 회사 소개 이미지 */}

@@ -336,16 +336,16 @@ export default function CompanyPage() {
                 <Box
                   position="absolute"
                   top="-52px"
-                  left="15%"
-                  right="15%"
+                  left="12.5%"
+                  right="12.5%"
                   height="2px"
                   backgroundColor={scrollY >= 320 ? "#ddd" : "#ddd"}
                   style={{
                     width:
                       scrollY >= 320
                         ? scrollY >= 370
-                          ? "70%"
-                          : `${((scrollY - 320) / (370 - 320)) * 70}%`
+                          ? "75%"
+                          : `${((scrollY - 320) / (370 - 320)) * 75}%`
                         : "0%",
                     transition:
                       "width 0.8s ease-out, background-color 0.3s ease-out",
@@ -357,7 +357,7 @@ export default function CompanyPage() {
                 <Box
                   position="absolute"
                   top="-52px"
-                  left="15%"
+                  left="12.5%"
                   width="2px"
                   style={{
                     height: `${getLineHeight(320, 370, 50)}px`,
@@ -388,7 +388,7 @@ export default function CompanyPage() {
                 <Box
                   position="absolute"
                   top="-52px"
-                  right="15%"
+                  right="12.5%"
                   width="2px"
                   style={{
                     height: `${getLineHeight(320, 370, 50)}px`,
@@ -402,7 +402,7 @@ export default function CompanyPage() {
                 {/* 지원팀 */}
                 <Box
                   textAlign="center"
-                  w="30%"
+                  w="25%"
                   style={getBoxAnimationStyle(350, 0)}
                   position="relative"
                   zIndex={2}
@@ -410,7 +410,7 @@ export default function CompanyPage() {
                   <Box
                     bg="#749DE6"
                     color="white"
-                    px={8}
+                    px={6}
                     py={4}
                     borderRadius="30px"
                     fontSize={{ base: "16px", lg: "18px" }}
@@ -460,7 +460,7 @@ export default function CompanyPage() {
                   <Stack style={getBoxAnimationStyle(390, 0)}>
                     <Box
                       bg="#dbdbdb"
-                      px={8}
+                      px={6}
                       py={3}
                       borderRadius="30px"
                       fontSize={{ base: "16px", lg: "18px" }}
@@ -483,7 +483,7 @@ export default function CompanyPage() {
                     </Box>
                     <Box
                       bg="#dbdbdb"
-                      px={8}
+                      px={4}
                       py={3}
                       borderRadius="30px"
                       fontSize={{ base: "16px", lg: "18px" }}
@@ -491,7 +491,7 @@ export default function CompanyPage() {
                       boxShadow="0 1px 3px rgba(0, 0, 0, 0.1)"
                       style={getBoxAnimationStyle(410, 0)}
                     >
-                      보건
+                      인사총무
                     </Box>
                     {/* 연결선 */}
                     <Box display="flex" justifyContent="center">
@@ -506,7 +506,7 @@ export default function CompanyPage() {
                     </Box>
                     <Box
                       bg="#dbdbdb"
-                      px={8}
+                      px={6}
                       py={3}
                       borderRadius="30px"
                       fontSize={{ base: "16px", lg: "18px" }}
@@ -514,7 +514,7 @@ export default function CompanyPage() {
                       boxShadow="0 1px 3px rgba(0, 0, 0, 0.1)"
                       style={getBoxAnimationStyle(430, 0)}
                     >
-                      환경
+                      품질
                     </Box>
                     {/* 연결선 */}
                     <Box display="flex" justifyContent="center">
@@ -529,7 +529,7 @@ export default function CompanyPage() {
                     </Box>
                     <Box
                       bg="#dbdbdb"
-                      px={8}
+                      px={6}
                       py={3}
                       borderRadius="30px"
                       fontSize={{ base: "16px", lg: "18px" }}
@@ -537,7 +537,7 @@ export default function CompanyPage() {
                       boxShadow="0 1px 3px rgba(0, 0, 0, 0.1)"
                       style={getBoxAnimationStyle(450, 0)}
                     >
-                      구매
+                      환경
                     </Box>
                     {/* 연결선 */}
                     <Box display="flex" justifyContent="center">
@@ -552,7 +552,7 @@ export default function CompanyPage() {
                     </Box>
                     <Box
                       bg="#dbdbdb"
-                      px={8}
+                      px={4}
                       py={3}
                       borderRadius="30px"
                       fontSize={{ base: "16px", lg: "18px" }}
@@ -560,7 +560,7 @@ export default function CompanyPage() {
                       boxShadow="0 1px 3px rgba(0, 0, 0, 0.1)"
                       style={getBoxAnimationStyle(470, 0)}
                     >
-                      제무회계
+                      재무회계
                     </Box>
                     {/* 연결선 */}
                     <Box display="flex" justifyContent="center">
@@ -575,7 +575,7 @@ export default function CompanyPage() {
                     </Box>
                     <Box
                       bg="#dbdbdb"
-                      px={8}
+                      px={4}
                       py={3}
                       borderRadius="30px"
                       fontSize={{ base: "16px", lg: "18px" }}
@@ -583,7 +583,7 @@ export default function CompanyPage() {
                       boxShadow="0 1px 3px rgba(0, 0, 0, 0.1)"
                       style={getBoxAnimationStyle(490, 0)}
                     >
-                      소물씨
+                      수행비서
                     </Box>
                   </Stack>
                 </Box>
@@ -591,7 +591,7 @@ export default function CompanyPage() {
                 {/* 생산팀 */}
                 <Box
                   textAlign="center"
-                  w="30%"
+                  w="50%"
                   style={getBoxAnimationStyle(550, 0)}
                   position="relative"
                   zIndex={2}
@@ -647,19 +647,19 @@ export default function CompanyPage() {
                     />
                   </Box>
 
-                  {/* 주간반장과 생산기술팀을 각각 독립적인 계층으로 배치 */}
+                  {/* 주간반장과 생산기술원을 나란히 배치 */}
                   <Stack
                     direction="row"
                     gap={4}
+                    marginBottom={1}
                     justify="center"
                     justifyContent="space-between"
                     style={getBoxAnimationStyle(590, 0)}
                   >
-                    {/* 주간반장 그룹 */}
                     <Box textAlign="center" w="48%">
                       <Box
                         bg="#dbdbdb"
-                        px={6}
+                        px={4}
                         py={3}
                         borderRadius="30px"
                         fontSize={{ base: "16px", lg: "18px" }}
@@ -669,58 +669,11 @@ export default function CompanyPage() {
                       >
                         주간반장
                       </Box>
-                      {/* 연결선 */}
-                      <Box display="flex" justifyContent="center" mb={2}>
-                        <Box
-                          style={{
-                            height: `${getLineHeight(610, 620, 20)}px`,
-                            ...getLineStyle(610, 620),
-                            transition:
-                              "height 0.2s ease-out, background-color 0.2s ease-out, width 0.2s ease-out",
-                          }}
-                        />
-                      </Box>
-                      {/* 주간반장 아래 교대반장들 */}
-                      <Stack style={getBoxAnimationStyle(620, 0)}>
-                        <Box
-                          bg="#ededed"
-                          px={6}
-                          py={3}
-                          borderRadius="30px"
-                          fontSize={{ base: "16px", lg: "18px" }}
-                          color="black"
-                        >
-                          교대반장
-                        </Box>
-                        {/* 연결선 */}
-                        <Box display="flex" justifyContent="center">
-                          <Box
-                            style={{
-                              height: `${getLineHeight(640, 650, 20)}px`,
-                              ...getLineStyle(640, 650),
-                              transition:
-                                "height 0.2s ease-out, background-color 0.2s ease-out, width 0.2s ease-out",
-                            }}
-                          />
-                        </Box>
-                        <Box
-                          bg="#ededed"
-                          px={6}
-                          py={3}
-                          borderRadius="30px"
-                          fontSize={{ base: "16px", lg: "18px" }}
-                          color="black"
-                        >
-                          교대반장
-                        </Box>
-                      </Stack>
                     </Box>
-
-                    {/* 생산기술팀 그룹 */}
                     <Box textAlign="center" w="48%">
                       <Box
                         bg="#dbdbdb"
-                        px={6}
+                        px={3}
                         py={3}
                         borderRadius="30px"
                         fontSize={{ base: "16px", lg: "18px" }}
@@ -728,53 +681,141 @@ export default function CompanyPage() {
                         boxShadow="0 1px 3px rgba(0, 0, 0, 0.1)"
                         mb={2}
                       >
-                        생산기술팀
+                        생산기술원
                       </Box>
-                      {/* 연결선 */}
-                      <Box display="flex" justifyContent="center" mb={2}>
+                    </Box>
+                  </Stack>
+
+                  {/* 중앙 절대 세로선: 생산팀에서 교대반장 가로선까지 연결 */}
+                  <Box
+                    position="absolute"
+                    left="50%"
+                    transform="translateX(-50%)"
+                    top={{ base: "100px", lg: "105px" }}
+                    width="2px"
+                    style={{
+                      height: `${getLineHeight(590, 660, 68)}px`,
+                      ...getLineStyle(590, 660),
+                      transition:
+                        "height 0.4s ease-out, background-color 0.3s ease-out, width 0.3s ease-out",
+                    }}
+                  />
+
+                  {/* 하위 가로 연결선 (교대반장 라인) */}
+                  <Box
+                    position="absolute"
+                    left="50%"
+                    transform="translateX(-50%)"
+                    top={{ base: "166px", lg: "172px" }}
+                    height="2px"
+                    backgroundColor={scrollY >= 620 ? "#ddd" : "#ddd"}
+                    style={{
+                      width:
+                        scrollY >= 620
+                          ? scrollY >= 660
+                            ? "77.3%"
+                            : `${((scrollY - 620) / (660 - 620)) * 92}%`
+                          : "0%",
+                      transition:
+                        "width 0.6s ease-out, background-color 0.3s ease-out",
+                    }}
+                  />
+
+                  {/* 교대반장 4개를 생산팀 하위에 독립 배치 */}
+                  <Stack
+                    direction="row"
+                    gap={{ base: 1, lg: 4 }}
+                    justify="space-between"
+                    style={getBoxAnimationStyle(660, 0)}
+                    marginTop={0}
+                  >
+                    <Box textAlign="center" w="23%">
+                      <Box display="flex" justifyContent="center">
                         <Box
                           style={{
-                            height: `${getLineHeight(610, 620, 20)}px`,
-                            ...getLineStyle(610, 620),
+                            height: `${getLineHeight(660, 660, 20)}px`,
+                            ...getLineStyle(660, 670),
                             transition:
-                              "height 0.2s ease-out, background-color 0.2s ease-out, width 0.2s ease-out",
+                              "height 0.2s ease-out, background-color 0.2s ease-out",
                           }}
                         />
                       </Box>
-                      {/* 생산기술팀 아래 교대반장들 */}
-                      <Stack style={getBoxAnimationStyle(620, 0)}>
+                      <Box
+                        bg="#ededed"
+                        px={6}
+                        py={3}
+                        borderRadius="30px"
+                        fontSize={{ base: "16px", lg: "18px" }}
+                        color="black"
+                      >
+                        교대반장
+                      </Box>
+                    </Box>
+                    <Box textAlign="center" w="23%">
+                      <Box display="flex" justifyContent="center">
                         <Box
-                          bg="#ededed"
-                          px={6}
-                          py={3}
-                          borderRadius="30px"
-                          fontSize={{ base: "16px", lg: "18px" }}
-                          color="black"
-                        >
-                          교대반장
-                        </Box>
-                        {/* 연결선 */}
-                        <Box display="flex" justifyContent="center">
-                          <Box
-                            style={{
-                              height: `${getLineHeight(640, 650, 20)}px`,
-                              ...getLineStyle(640, 650),
-                              transition:
-                                "height 0.2s ease-out, background-color 0.2s ease-out, width 0.2s ease-out",
-                            }}
-                          />
-                        </Box>
+                          style={{
+                            height: `${getLineHeight(660, 670, 20)}px`,
+                            ...getLineStyle(660, 670),
+                            transition:
+                              "height 0.2s ease-out, background-color 0.2s ease-out",
+                          }}
+                        />
+                      </Box>
+                      <Box
+                        bg="#ededed"
+                        px={6}
+                        py={3}
+                        borderRadius="30px"
+                        fontSize={{ base: "16px", lg: "18px" }}
+                        color="black"
+                      >
+                        교대반장
+                      </Box>
+                    </Box>
+                    <Box textAlign="center" w="23%">
+                      <Box display="flex" justifyContent="center">
                         <Box
-                          bg="#ededed"
-                          px={6}
-                          py={3}
-                          borderRadius="30px"
-                          fontSize={{ base: "16px", lg: "18px" }}
-                          color="black"
-                        >
-                          교대반장
-                        </Box>
-                      </Stack>
+                          style={{
+                            height: `${getLineHeight(660, 670, 20)}px`,
+                            ...getLineStyle(660, 670),
+                            transition:
+                              "height 0.2s ease-out, background-color 0.2s ease-out",
+                          }}
+                        />
+                      </Box>
+                      <Box
+                        bg="#ededed"
+                        px={6}
+                        py={3}
+                        borderRadius="30px"
+                        fontSize={{ base: "16px", lg: "18px" }}
+                        color="black"
+                      >
+                        교대반장
+                      </Box>
+                    </Box>
+                    <Box textAlign="center" w="23%">
+                      <Box display="flex" justifyContent="center">
+                        <Box
+                          style={{
+                            height: `${getLineHeight(660, 670, 20)}px`,
+                            ...getLineStyle(660, 670),
+                            transition:
+                              "height 0.2s ease-out, background-color 0.2s ease-out",
+                          }}
+                        />
+                      </Box>
+                      <Box
+                        bg="#ededed"
+                        px={6}
+                        py={3}
+                        borderRadius="30px"
+                        fontSize={{ base: "16px", lg: "18px" }}
+                        color="black"
+                      >
+                        교대반장
+                      </Box>
                     </Box>
                   </Stack>
                 </Box>
@@ -782,7 +823,7 @@ export default function CompanyPage() {
                 {/* 설비팀 */}
                 <Box
                   textAlign="center"
-                  w="30%"
+                  w="25%"
                   style={getBoxAnimationStyle(700, 0)}
                   position="relative"
                   zIndex={2}
@@ -790,7 +831,7 @@ export default function CompanyPage() {
                   <Box
                     bg="#749DE6"
                     color="white"
-                    px={8}
+                    px={6}
                     py={4}
                     borderRadius="30px"
                     fontSize={{ base: "16px", lg: "18px" }}
@@ -840,14 +881,14 @@ export default function CompanyPage() {
                   <Stack style={getBoxAnimationStyle(720, 0)}>
                     <Box
                       bg="#dbdbdb"
-                      px={8}
+                      px={6}
                       py={3}
                       borderRadius="30px"
                       fontSize={{ base: "16px", lg: "18px" }}
                       color="black"
                       boxShadow="0 1px 3px rgba(0, 0, 0, 0.1)"
                     >
-                      정비
+                      전기
                     </Box>
                     {/* 연결선 */}
                     <Box display="flex" justifyContent="center">
@@ -862,7 +903,7 @@ export default function CompanyPage() {
                     </Box>
                     <Box
                       bg="#dbdbdb"
-                      px={8}
+                      px={6}
                       py={3}
                       borderRadius="30px"
                       fontSize={{ base: "16px", lg: "18px" }}
@@ -885,7 +926,7 @@ export default function CompanyPage() {
                     </Box>
                     <Box
                       bg="#dbdbdb"
-                      px={8}
+                      px={6}
                       py={3}
                       borderRadius="30px"
                       fontSize={{ base: "16px", lg: "18px" }}
