@@ -569,8 +569,13 @@ export default function BoardPage({
             onKeywordChange={setKeywordInput}
             onSearch={handleSearch}
             onClearSearch={handleClearSearch} // Pass the new handler
-            viewMode={viewMode}
-            onViewModeChange={setViewMode}
+            // /bbs/resources 에서는 리스트 전용으로 고정
+            viewMode={currentPathId === "resources" ? "list" : viewMode}
+            onViewModeChange={
+              currentPathId === "resources"
+                ? () => {}
+                : setViewMode
+            }
             currentKeyword={currentKeyword} // Pass currentKeyword for clear button logic
             requestedPageSize={requestedPageSizeFromUrl} // Pass for clear button
             defaultPageSize={DEFAULT_PAGE_SIZE} // Pass for clear button
@@ -592,7 +597,8 @@ export default function BoardPage({
                   posts={posts}
                   pagination={pagination}
                   currentPathId={currentPathId!}
-                  viewMode={viewMode}
+                  // /bbs/resources 는 리스트 전용으로 강제
+                  viewMode={currentPathId === "resources" ? "list" : viewMode}
                 />
               );
             }
