@@ -87,15 +87,15 @@ const Footer = () => {
           </Box>
           <Box display="flex" alignItems="center" gap="8px" fontSize="0.9rem">
             <Text fontWeight="600" color="#333">
-              대표전화 : 052-237-8190
+              대표전화 : 
             </Text>
-            <Text color="#666">000-0000-0000</Text>
+            <Text color="#666">052-237-8190</Text>
           </Box>
           <Box display="flex" alignItems="center" gap="8px" fontSize="0.9rem">
             <Text fontWeight="600" color="#333">
-              FAX : 052-237-8191
+              FAX : 
             </Text>
-            <Text color="#666">000-0000-0000</Text>
+            <Text color="#666">052-237-8191</Text>
           </Box>
         </Box>
 
