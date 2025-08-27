@@ -68,7 +68,7 @@ const Footer = () => {
         <Box
           display="flex"
           flexDirection="row"
-          justifyContent="space-between"
+          justifyContent="space-evenly"
           alignItems="center"
           flexWrap="wrap"
           gap={{ base: "20px", xl: "40px" }}
