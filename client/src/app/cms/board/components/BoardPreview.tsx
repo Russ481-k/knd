@@ -492,6 +492,12 @@ const BoardPreview = React.memo(function BoardPreview({
     };
 
     if (board?.skinType === "PRESS") {
+      const boardIdForHeader = (() => {
+        const pathParts = (menu?.url ?? "").split("/");
+        return (
+          pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2]
+        );
+      })();
       return [
         {
           headerName: "번호",
@@ -515,7 +521,7 @@ const BoardPreview = React.memo(function BoardPreview({
           minWidth: 300,
         },
         {
-          headerName: "작성자",
+          headerName: boardIdForHeader === "resources" ? "신문" : "작성자",
           field: "displayWriter",
           width: 120,
 

@@ -40,6 +40,7 @@ import { useColors } from "@/styles/theme";
 import dayjs from "dayjs";
 import PostTitleDisplay from "@/components/common/PostTitleDisplay";
 import TitleCellRenderer from "../common/TitleCellRenderer";
+import { useBreakpointValue } from "@chakra-ui/react";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -206,6 +207,9 @@ const PressBoardSkin: React.FC<PressBoardSkinProps> = ({
   const gridRef = useRef<AgGridReact<Post>>(null);
   const { colorMode } = useColorMode();
   const colors = useColors(); // For theme-dependent fallbacks
+  // 모바일/태블릿: 줄임, 데스크톱: 전체 제목
+  const disableTruncateDesktop =
+    useBreakpointValue({ base: false, md: false, lg: true }) || false;
 
   const agGridThemeClass =
     colorMode === "dark" ? "ag-theme-quartz-dark" : "ag-theme-quartz";
@@ -305,9 +309,9 @@ const PressBoardSkin: React.FC<PressBoardSkinProps> = ({
           ...baseCellStyle,
           paddingLeft: "16px",
           paddingRight: "16px",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
+          overflow: disableTruncateDesktop ? "visible" : "hidden",
+          textOverflow: disableTruncateDesktop ? "clip" : "ellipsis",
+          whiteSpace: disableTruncateDesktop ? "normal" : "nowrap",
         },
         minWidth: 300,
         headerClass: "press-list-header",

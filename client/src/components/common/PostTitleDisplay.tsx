@@ -13,11 +13,13 @@ export interface ArticleDisplayData {
 interface PostTitleDisplayProps {
   title: string;
   postData?: ArticleDisplayData; // BoardArticleCommon -> ArticleDisplayData로 변경
+  disableTruncate?: boolean; // 데스크톱 등에서 전체 제목 표기를 위해 줄임 비활성화
 }
 
 const PostTitleDisplay: React.FC<PostTitleDisplayProps> = ({
   title,
   postData,
+  disableTruncate,
 }) => {
   return (
     <HStack
@@ -29,7 +31,15 @@ const PostTitleDisplay: React.FC<PostTitleDisplayProps> = ({
       cursor="pointer"
       title={title}
     >
-      <Text truncate fontSize="16px" flex="1" minW="0">
+      <Text
+        fontSize="16px"
+        flex="1"
+        minW="0"
+        // disableTruncate가 true이면 말줄임 해제, 아니면 기존 truncate 유지
+        {...(disableTruncate
+          ? { noOfLines: undefined, isTruncated: false }
+          : { truncate: true })}
+      >
         {title}
       </Text>
       {postData?.hasImageInContent && (

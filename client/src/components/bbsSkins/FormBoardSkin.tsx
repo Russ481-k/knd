@@ -28,6 +28,7 @@ import {
   FaFileAlt,
 } from "react-icons/fa";
 import PostTitleDisplay from "@/components/common/PostTitleDisplay";
+import { useBreakpointValue } from "@chakra-ui/react";
 
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
@@ -110,6 +111,8 @@ const TitleRenderer: React.FC<
 > = ({ data, context }) => {
   if (!data || !context) return null;
   const { currentPathId } = context;
+  const disableTruncateDesktop =
+    useBreakpointValue({ base: false, md: false, lg: true }) || false;
   return (
     <ChakraLink
       as={NextLink}
@@ -122,7 +125,11 @@ const TitleRenderer: React.FC<
       py={1}
       _hover={{ textDecoration: "underline" }}
     >
-      <PostTitleDisplay title={data.title} postData={data} />
+      <PostTitleDisplay
+        title={data.title}
+        postData={data}
+        disableTruncate={disableTruncateDesktop}
+      />
     </ChakraLink>
   );
 };

@@ -199,33 +199,6 @@ export default function ProcessPage() {
                       02
                     </Text>
                   </Box>
-
-                  {/* PRODUCT 03 */}
-                  <Text
-                    w={{ base: "70px", lg: "100px" }}
-                    h={{ base: "70px", lg: "100px" }}
-                    fontSize={{ base: "12px", lg: "16px" }}
-                    fontWeight="bold"
-                    color="#666"
-                    borderRadius="50%"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    textAlign="center"
-                    cursor="pointer"
-                    transition="all 0.2s ease"
-                    _hover={{
-                      color: "white",
-                      bg: "#4A7CD5",
-                      boxShadow: "0 8px 25px rgba(74, 124, 213, 0.3)",
-                      transform: "scale(1.05)",
-                    }}
-                    onClick={() => scrollToProduct(product03Ref)}
-                  >
-                    PRODUCT
-                    <br />
-                    03
-                  </Text>
                 </Flex>
               </Box>
             </Box>
@@ -395,91 +368,6 @@ export default function ProcessPage() {
                       objectFit="cover"
                     />
                   </Box>
-                </Box>
-              </Flex>
-
-              {/* 세 번째 제품 - 이미지 왼쪽, 텍스트 오른쪽 */}
-              <Flex
-                ref={product03Ref}
-                direction={{
-                  base: "column",
-                  md: "column",
-                  lg: "row",
-                }}
-                justify="space-between"
-                align="center"
-                gap={10}
-                px={{ base: 3, lg: 20 }}
-                py={10}
-                w="100%"
-                borderRadius="20px"
-                border="1px solid #D9D9D9"
-                cursor="pointer"
-                transition="all 0.8s ease"
-                transform={
-                  animations.product03 ? "translateX(0)" : "translateX(-100px)"
-                }
-                opacity={animations.product03 ? 1 : 0}
-                _hover={{
-                  transform: animations.product03
-                    ? "translateY(-10px)"
-                    : "translateX(-100px) translateY(-10px)",
-                  boxShadow: "0 12px 30px rgba(0, 0, 0, 0.15)",
-                  borderColor: "#4A7CD5",
-                  bg: "rgba(74, 124, 213, 0.02)",
-                  transition: "all 0.2s ease",
-                }}
-                style={{
-                  scrollMarginTop: "100px",
-                }}
-              >
-                {/* 동그라미 이미지 영역 30% */}
-                <Box
-                  w={{ base: "100%", lg: "30%" }}
-                  display="flex"
-                  justifyContent="center"
-                >
-                  <Box
-                    w={{ base: "200px", lg: "300px" }}
-                    h={{ base: "200px", lg: "300px" }}
-                    overflow="hidden"
-                    borderRadius="50%"
-                    bg="gray.100"
-                  >
-                    <Image
-                      src="/images/sub/product3.png"
-                      alt="액화탄산"
-                      w="100%"
-                      h="100%"
-                      objectFit="cover"
-                    />
-                  </Box>
-                </Box>
-
-                {/* 텍스트 영역 60% */}
-                <Box w={{ base: "100%", lg: "60%" }} textAlign="center">
-                  <Heading
-                    as="h3"
-                    fontSize={{ base: "16px", lg: "24px", xl: "36px" }}
-                    fontWeight="bold"
-                    mb={10}
-                    color="#000"
-                  >
-                    액화탄산(L-CO2)
-                  </Heading>
-                  <Text
-                    fontSize={{ base: "14px", lg: "16px", xl: "18px" }}
-                    color="#333"
-                    lineHeight="1.6"
-                  >
-                    <strong>순도:</strong> 99.999%
-                    <br />
-                    <strong>생산능력:</strong> 일일 500 ~ 600톤
-                    <br />
-                    <strong>용도:</strong> 탄산음료, 드라이아이스, 용접, 소화기 등
-                    <br />
-                    <strong>공급 범위:</strong> 국내외 전 지역
-                  </Text>
                 </Box>
               </Flex>
             </Stack>

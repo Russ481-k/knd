@@ -29,6 +29,9 @@ const FaqBoardSkin: React.FC<FaqBoardSkinProps> = ({
   pagination,
   currentPathId, // prop 받기
 }) => {
+  // 모바일/태블릿: 줄임, 데스크톱: 전체 제목
+  const disableTruncateDesktop =
+    useBreakpointValue({ base: false, md: false, lg: true }) || false;
   const router = useRouter();
   // 반응형 폰트 크기 설정
   const fontSize = useBreakpointValue({
@@ -75,6 +78,7 @@ const FaqBoardSkin: React.FC<FaqBoardSkinProps> = ({
                     <PostTitleDisplay
                       title={faqItem.title}
                       postData={faqItem}
+                      disableTruncate={disableTruncateDesktop}
                     />
                   </Box>
                   <Accordion.ItemIndicator

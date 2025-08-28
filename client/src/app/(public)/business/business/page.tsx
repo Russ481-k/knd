@@ -375,10 +375,6 @@ export default function ProcessPage() {
                     lineHeight="1.6"
                   >
                     <strong>HP 스팀 생산:</strong> 연간 68만톤의 고압 스팀 생산 및 공급
-                    <br />
-                    <strong>액화탄산(L-CO2) 제조:</strong> 하루 500~600톤의 99.99% 고순도 액화탄산 생산
-                    <br />
-                    <strong>탄산 및 드라이아이스 공급:</strong> 국내외 다양한 현장에 CO2 활용제품 공급
                   </Text>
                 </Box>
 
@@ -481,8 +477,6 @@ export default function ProcessPage() {
                     lineHeight="1.6"
                   >
                     <strong>탄소 포집 및 활용:</strong> 수소 생산 과정에서 발생하는 CO2 포집 및 재활용
-                    <br />
-                    <strong>그린에너지 추구:</strong> 환경친화적 생산 공정을 통한 지속가능한 에너지 생산
                   </Text>
                 </Box>
               </Flex>

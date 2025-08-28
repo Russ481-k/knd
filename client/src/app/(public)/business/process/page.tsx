@@ -83,7 +83,7 @@ export default function ProcessPage() {
       image: "/images/sub/process4.png",
       width: "80%",
       description: [
-        "공정 중 발생하는 스팀과 CO2 회수 및 재활용"
+        "공정 중 발생하는 스팀 회수 및 재활용"
       ],
       direction: "column"
     }

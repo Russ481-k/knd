@@ -52,8 +52,8 @@ export default function HistoryPage() {
   const years = [2026, 2025, 2024, 2023];
   const historyData = {
     2026: [
-      { month: "06", content: "에쓰오일㈜ Shaheen Project 수소 공급" },
-      { month: "03", content: "수소 생산 시설 완공" },
+      { month: "06", content: "에쓰오일㈜ Shaheen Project 수소 공급(예정)" },
+      { month: "03", content: "수소 생산 시설 완공(예정)" },
     ],
     2025: [
       { month: "10", content: "본사 행정동 완공" },

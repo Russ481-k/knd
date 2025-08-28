@@ -55,6 +55,10 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
       lg: 30, // 데스크톱: 35자
     }) || 15;
 
+  // 모바일/태블릿: 줄임, 데스크톱: 전체 제목
+  const disableTruncateDesktop =
+    useBreakpointValue({ base: false, md: false, lg: true }) || false;
+
   // 제목 자르기 함수
   const truncateTitle = (title: string, maxLength: number) => {
     if (title.length <= maxLength) return title;
@@ -206,7 +210,7 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
                     py={6}
                     px={4}
                   >
-                    작성자
+                    {currentPathId === "resources" ? "신문" : "작성자"}
                   </Box>
                   <Box
                     as="th"
@@ -300,11 +304,13 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
                             title={post.title}
                           >
                             <PostTitleDisplay
-                              title={truncateTitle(post.title, titleMaxLength)}
+                              // 모바일/태블릿: 말줄임, 데스크톱: 전체 제목
+                              title={post.title}
                               postData={{
                                 hasImageInContent: post.hasImageInContent,
                                 hasAttachment: post.hasAttachment,
                               }}
+                              disableTruncate={disableTruncateDesktop}
                             />
                           </Text>
 
