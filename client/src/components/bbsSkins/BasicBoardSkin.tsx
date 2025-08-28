@@ -183,8 +183,8 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
                   <Box
                     as="th"
                     textAlign="center"
-                    width="80px"
-                    fontSize={{ base: "14px", md: "18px" }}
+                    width="100px"
+                    fontSize={{ base: "14px", md: "16px" }}
                     fontWeight="600"
                     py={6}
                     px={4}
@@ -193,7 +193,7 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
                   </Box>
                   <Box
                     as="th"
-                    fontSize={{ base: "14px", md: "18px" }}
+                    fontSize={{ base: "14px", md: "16px" }}
                     textAlign="center"
                     fontWeight="600"
                     py={6}
@@ -204,8 +204,8 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
                   <Box
                     as="th"
                     textAlign="center"
-                    width="120px"
-                    fontSize={{ base: "14px", md: "18px" }}
+                    width="160px"
+                    fontSize={{ base: "14px", md: "16px" }}
                     fontWeight="600"
                     py={6}
                     px={4}
@@ -215,8 +215,8 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
                   <Box
                     as="th"
                     textAlign="center"
-                    width="120px"
-                    fontSize={{ base: "14px", md: "18px" }}
+                    width="160px"
+                    fontSize={{ base: "14px", md: "16px" }}
                     fontWeight="600"
                     py={6}
                     px={4}
@@ -227,7 +227,7 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
                     as="th"
                     textAlign="center"
                     width="80px"
-                    fontSize={{ base: "14px", md: "18px" }}
+                    fontSize={{ base: "14px", md: "16px" }}
                     fontWeight="600"
                     py={6}
                     px={4}
@@ -264,7 +264,7 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
                         as="td"
                         color="#666"
                         textAlign="center"
-                        fontSize={{ base: "14px", md: "18px" }}
+                        fontSize={{ base: "14px", md: "16px" }}
                         py={4}
                         px={2}
                       >
@@ -290,12 +290,12 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
                       <Box
                         as="td"
                         color="#666"
-                        fontSize={{ base: "14px", md: "18px" }}
+                        fontSize={{ base: "14px", md: "16px" }}
                         py={4}
                         px={2}
                         textAlign="center"
                       >
-                        <Flex align="center" justify="center" gap={2}>
+                        <Flex align="center" justify="flex-start" gap={2}>
                           <Text
                             color={isNoticeCategory ? "#4A7CD5" : "#666"}
                             _hover={{ color: "blue.500" }}
@@ -318,7 +318,7 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
                             <Icon
                               as={LuExternalLink}
                               color="blue.400"
-                              fontSize={{ base: "14px", md: "18px" }}
+                              fontSize={{ base: "14px", md: "16px" }}
                               flexShrink={0}
                             />
                           )}
@@ -328,7 +328,7 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
                         as="td"
                         textAlign="center"
                         color="#666"
-                        fontSize={{ base: "14px", md: "18px" }}
+                        fontSize={{ base: "14px", md: "16px" }}
                         py={4}
                         px={2}
                       >
@@ -338,7 +338,7 @@ const BasicBoardSkin: React.FC<BasicBoardSkinProps> = ({
                         as="td"
                         textAlign="center"
                         color="#666"
-                        fontSize={{ base: "14px", md: "18px" }}
+                        fontSize={{ base: "14px", md: "16px" }}
                         py={4}
                         px={2}
                       >
