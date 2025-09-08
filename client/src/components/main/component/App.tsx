@@ -185,13 +185,20 @@ function AppContent() {
     },
     {
       id: "02",
+      title: "연혁",
+      description:
+        "창립부터 역량을 확장해 온 K&D Energen의 성장 발자취와 주요 이정표를 연도별로 확인할 수 있습니다.",
+      link: "/knd/history",
+    },
+    {
+      id: "03",
       title: "조직도",
       description:
         "지원팀, 생산팀, 설비팀 부서로 구성되어 있으며 부서 간 긴밀한 협업을 통해 최적의 에너지 솔루션을 제공합니다.",
       link: "/knd/organization",
     },
     {
-      id: "03",
+      id: "04",
       title: "오시는 길",
       description:
         "울산광역시 울주군 온산읍 산암로 213에 위치해 있으며, 주차장 및 방문객 주차 공간이 완비되어 있습니다.",

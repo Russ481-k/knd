@@ -1,0 +1,40 @@
+services:
+  nginx:
+    image: nginx:1.25
+    container_name: knd_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - /root/knd/deploy/certs:/etc/nginx/certs:ro
+      - letsencrypt:/etc/letsencrypt
+      - certbot-webroot:/var/www/certbot
+    depends_on:
+      - client
+      - server
+    networks:
+      edge:
+        aliases:
+          - knd-proxy
+
+  certbot:
+    image: certbot/certbot:latest
+    container_name: knd_certbot
+    volumes:
+      - letsencrypt:/etc/letsencrypt
+      - certbot-webroot:/var/www/certbot
+    networks:
+      edge:
+        aliases:
+          - knd-certbot
+    entrypoint: "/bin/sh -c"
+    command: "echo Certbot container ready. Use 'docker compose run --rm certbot ...'"
+
+networks:
+  edge:
+    external: true
+
+volumes:
+  letsencrypt:
+  certbot-webroot:

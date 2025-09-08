@@ -4,11 +4,15 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: https://kndenergen.co.kr
+        NEXT_PUBLIC_API_BASE_URL: /api
     expose:
-      - "3000"
+      - "3306"
     environment:
       - NODE_ENV=production
       - NEXT_PUBLIC_API_BASE_URL=/api
+      - NEXT_PUBLIC_API_URL=https://kndenergen.co.kr
     networks:
       edge:
         aliases:
@@ -30,7 +34,7 @@ services:
       - DOCKER_BUILDKIT=1
       - SPRING_DATASOURCE_URL=jdbc:mariadb://db:3306/knd?useSSL=false&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
       - SPRING_DATASOURCE_USERNAME=knd
-      - SPRING_DATASOURCE_PASSWORD=강력한비밀번호
+      - SPRING_DATASOURCE_PASSWORD=kndpw
     env_file:
       - ./server/.env
     networks:
