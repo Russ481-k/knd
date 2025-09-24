@@ -476,7 +476,7 @@ export default function ProcessPage() {
                     color="#333"
                     lineHeight="1.6"
                   >
-                    <strong>탄소 포집 및 활용:</strong> 수소 생산 과정에서 발생하는 CO2 포집 및 재활용
+                    <strong>그린에너지 추구:</strong> 환경친화적 생산 공정을 통한 지속가능한 에너지 생산
                   </Text>
                 </Box>
               </Flex>

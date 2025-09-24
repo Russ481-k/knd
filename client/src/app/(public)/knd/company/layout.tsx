@@ -13,21 +13,24 @@ import {
 import NextLink from "next/link";
 
 export const metadata: Metadata = {
-  title: "회사소개 | 한국NICE개발",
+  title: "회사소개 | 케이엔디에너젠",
   description:
-    "한국NICE개발의 회사 소개, 비전, 미션, 연혁 및 주요 서비스를 확인하세요.",
+    "지속가능한 성장과 혁신을 통해 더 나은 미래를 만들어갑니다.",
   keywords: [
-    "한국NICE개발",
-    "회사소개",
-    "IT솔루션",
-    "웹개발",
-    "모바일앱",
-    "클라우드",
+    "케이엔디에너젠",
+    "케이앤디에너젠",
+    "knd",
+    "kndenergen",
+    "수소가스 제조 및 공급",
+    "부산물 활용",
+    "친환경 에너지 솔루션",
+    "고순도 수소가스",
+    "고압스팀",
   ],
   openGraph: {
-    title: "회사소개 | 한국NICE개발",
+    title: "회사소개 | 케이엔디에너젠",
     description:
-      "한국NICE개발의 회사 소개, 비전, 미션, 연혁 및 주요 서비스를 확인하세요.",
+      "지속가능한 성장과 혁신을 통해 더 나은 미래를 만들어갑니다.",
     type: "website",
   },
 };
