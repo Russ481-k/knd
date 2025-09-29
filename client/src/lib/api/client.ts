@@ -11,7 +11,7 @@ import {
 } from "../auth-utils";
 
 // Java 백엔드 서버 주소 설정
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL + "/api/v1";
+const BASE_URL = (process.env.NEXT_PUBLIC_API_BASE_URL || "/api") + "/v1";
 
 // 기본 API 클라이언트 설정
 const createApiClient = (needsAuth: boolean): AxiosInstance => {
@@ -50,8 +50,13 @@ const createApiClient = (needsAuth: boolean): AxiosInstance => {
             removeToken();
             if (typeof window !== "undefined") {
               const isCmsApi = originalRequest.url?.startsWith("/cms");
-              const loginUrl = isCmsApi ? "/cms/login" : "/login";
-              window.location.href = `${loginUrl}?error=session_expired`;
+              if (isCmsApi) {
+                // CMS 접근 시에만 로그인 페이지로 리다이렉트
+                window.location.href = "/cms/login?error=session_expired";
+              } else {
+                // 일반 사용자는 홈페이지로 리다이렉트
+                window.location.href = "/";
+              }
             }
             return Promise.reject(new Error("No refresh token available."));
           }
@@ -83,8 +88,13 @@ const createApiClient = (needsAuth: boolean): AxiosInstance => {
             removeToken();
             if (typeof window !== "undefined") {
               const isCmsApi = originalRequest.url?.startsWith("/cms");
-              const loginUrl = isCmsApi ? "/cms/login" : "/login";
-              window.location.href = `${loginUrl}?error=session_expired`;
+              if (isCmsApi) {
+                // CMS 접근 시에만 로그인 페이지로 리다이렉트
+                window.location.href = "/cms/login?error=session_expired";
+              } else {
+                // 일반 사용자는 홈페이지로 리다이렉트
+                window.location.href = "/";
+              }
             }
             return Promise.reject(reissueError);
           }

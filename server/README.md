@@ -263,4 +263,4 @@ ps aux --sort=-%mem | head
 ---
 
 _Made with ❤️ by CMS Development Team_
-cd /root/knd/server && nohup mvn clean package spring-boot:run > nohup.out 2>&1 &
+cd /home/secadmin/knd/server && nohup mvn clean package spring-boot:run > nohup.out 2>&1 &

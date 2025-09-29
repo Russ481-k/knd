@@ -10,19 +10,16 @@ COPY pom.xml .
 COPY libs ./libs
 
 # Install custom libraries first (this layer will be cached)
-RUN --mount=type=cache,target=/root/.m2 \
-    mvn install:install-file -Dfile=libs/NiceID_v1.2.jar -DgroupId=com.niceid -DartifactId=niceid -Dversion=1.2 -Dpackaging=jar
+RUN mvn install:install-file -Dfile=libs/NiceID_v1.2.jar -DgroupId=com.niceid -DartifactId=niceid -Dversion=1.2 -Dpackaging=jar
 
 # Download dependencies only (this layer will be cached if pom.xml doesn't change)
-RUN --mount=type=cache,target=/root/.m2 \
-    mvn dependency:go-offline -Dmaven.wagon.http.retryHandler.count=3 -Dmaven.wagon.httpconnectionManager.ttlSeconds=120
+RUN mvn dependency:go-offline -Dmaven.wagon.http.retryHandler.count=3 -Dmaven.wagon.httpconnectionManager.ttlSeconds=120
 
 # Copy source code and build (only this layer will change with code changes)
 COPY src ./src
 COPY .env ./
 
-RUN --mount=type=cache,target=/root/.m2 \
-    mvn clean package -DskipTests -Dmaven.wagon.http.retryHandler.count=3
+RUN mvn clean package -DskipTests -Dmaven.wagon.http.retryHandler.count=3
 
 # Stage 2: Create the final, smaller image with just the JRE
 FROM eclipse-temurin:17-jre-jammy

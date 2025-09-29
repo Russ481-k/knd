@@ -370,7 +370,7 @@ export default function CompanySection({
         </Box>
 
         <Heading
-          as="h1"
+          as="h2"
           fontSize={{ base: "32px", md: "48px", lg: "64px" }}
           fontWeight="bold"
           lineHeight="1.2"

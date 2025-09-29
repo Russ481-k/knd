@@ -42,28 +42,34 @@ export function withAuthRedirect<T extends (...args: any[]) => Promise<any>>(
           duration: 3000, // Reduced duration slightly for faster UX
         });
 
-        // Capture the current path to redirect back after login
-        const currentPath = Router.asPath; // asPath includes query parameters
-        const loginUrl = `/login?redirectUrl=${encodeURIComponent(
-          currentPath
-        )}`;
+        // 현재 경로가 CMS인지 확인
+        const currentPath = Router.asPath;
+        const isCmsPath = currentPath.startsWith("/cms");
 
         try {
-          // It's important that Router.push completes before null is returned,
-          // but in practice, the redirect will take over.
-          await Router.push(loginUrl);
+          if (isCmsPath) {
+            // CMS 영역에서만 로그인 페이지로 리다이렉트
+            const loginUrl = `/cms/login?redirectUrl=${encodeURIComponent(currentPath)}`;
+            await Router.push(loginUrl);
+          } else {
+            // 일반 사용자는 홈페이지로 리다이렉트
+            await Router.push("/");
+          }
         } catch (redirectError) {
           console.error(
             "[withAuthRedirect] Error during Router.push:",
             redirectError
           );
-          // Fallback to simple /login if constructing redirectUrl fails for some reason
-          // though encodeURIComponent should make it safe.
+          // Fallback
           try {
-            await Router.push("/login");
+            if (isCmsPath) {
+              await Router.push("/cms/login");
+            } else {
+              await Router.push("/");
+            }
           } catch (fallbackRedirectError) {
             console.error(
-              "[withAuthRedirect] Error during fallback Router.push to /login:",
+              "[withAuthRedirect] Error during fallback Router.push:",
               fallbackRedirectError
             );
           }
