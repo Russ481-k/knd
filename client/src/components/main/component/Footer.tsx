@@ -87,15 +87,29 @@ const Footer = () => {
           </Box>
           <Box display="flex" alignItems="center" gap="8px" fontSize="0.9rem">
             <Text fontWeight="600" color="#333">
-              대표전화 : 
+              대표전화 :
             </Text>
             <Text color="#666">052-237-8190</Text>
           </Box>
           <Box display="flex" alignItems="center" gap="8px" fontSize="0.9rem">
             <Text fontWeight="600" color="#333">
-              FAX : 
+              FAX :
             </Text>
             <Text color="#666">052-237-8191</Text>
+          </Box>
+          <Box display="flex" alignItems="center" gap="8px" fontSize="0.9rem">
+            <Text fontWeight="600" color="#333">
+              사업자등록번호
+            </Text>
+            <Text color="#666">361-81-02974</Text>
+          </Box>
+          <Box display="flex" alignItems="center" gap="8px" fontSize="0.9rem">
+            <Text fontWeight="600" color="#333" minWidth="60px">
+              대표자
+            </Text>
+            <Text color="#666">
+              장선우, 김기철
+            </Text>
           </Box>
         </Box>
 

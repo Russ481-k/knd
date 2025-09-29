@@ -20,10 +20,10 @@ export default function RootLayout({
         <meta property="og:site_name" content="케이앤디에너젠" />
         <meta property="og:description" content="지속가능한 성장과 혁신을 통해 더 나은 미래를 만들어갑니다." />
         <meta name="description" content="지속가능한 성장과 혁신을 통해 더 나은 미래를 만들어갑니다." />
-        <meta name="keywords" content="케이엔디에너젠, 케이앤디에너젠, knd, 에너젠, kndenergen, 수소가스 제조 및 공급, 부산물 활용, 친환경 에너지 솔루션, 고순도 수소가스, 고압스팀" />
+        <meta name="keywords" content="케이앤디에너젠, 케이앤디에너젠(주), 케이엔디에너젠, 케이앤디에너젠 공식 홈페이지, knd, kndenergen, 수소가스 제조 및 공급, 부산물 활용, 친환경 에너지 솔루션, 고순도 수소가스, 고압스팀" />
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
         <link rel="shortcut icon" href="/images/favicon.ico" />
-        <title>케이앤디에너젠</title>
+        <title>케이앤디에너젠 공식 홈페이지 | 수소·에너지 전문 기업</title>
         <Script
           src="/assets/lang-config.js"
           strategy="beforeInteractive"
