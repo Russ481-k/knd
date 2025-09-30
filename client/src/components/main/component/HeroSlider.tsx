@@ -92,7 +92,7 @@ const HeroSlider = () => {
   const slides: SlideData[] = [
     {
       id: 1,
-      image: "/images/main/section1_bg.jpg",
+      image: "/images/main/section1_bg.webp",
       title: (
         <>
           혁신을 채우는 에너지원,
@@ -105,7 +105,7 @@ const HeroSlider = () => {
     },
     {
       id: 2,
-      image: "/images/main/section2_bg.jpg",
+      image: "/images/main/section2_bg.webp",
       title: (
         <>
           수소 에너지의
@@ -118,7 +118,7 @@ const HeroSlider = () => {
     },
     {
       id: 3,
-      image: "/images/main/section3_bg.jpg",
+      image: "/images/main/section3_bg.webp",
       title: (
         <>
           글로벌 에너지

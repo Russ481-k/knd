@@ -75,7 +75,7 @@ export default function HistoryPage() {
       <PageHeroBanner
         title="COMPANY"
         subtitle="K&D Energen의 연혁을 소개합니다"
-        backgroundImage="/images/main/hero-image.jpg"
+        backgroundImage="/images/main/hero-image.webp"
         height="600px"
         menuType="custom"
         customMenuItems={companyMenuItems}

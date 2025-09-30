@@ -141,7 +141,7 @@ export function PageHeroBanner({
     ? {
         title: manualTitle || "K&D ENERGEN",
         subtitle: manualSubtitle,
-        backgroundImage: manualBackgroundImage || "/images/main/hero-image.jpg",
+      backgroundImage: manualBackgroundImage || "/images/main/hero-image.webp",
         height: manualHeight || "500px",
         showMenuBar: manualShowMenuBar ?? true,
         customMenuItems: manualCustomMenuItems || [],

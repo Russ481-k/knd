@@ -203,7 +203,7 @@ export default function ArticleDetailPage() {
           title: "PR",
           fontFamily: "montserrat !important",
           subtitle: "케이앤디에너젠의 공지사항을 확인하세요",
-          backgroundImage: "/images/sub/privacy_bg.jpg",
+          backgroundImage: "/images/sub/privacy_bg.webp",
           menuItems: [
             { name: "PR", href: "/bbs/notices" },
             { name: "공지사항", href: "/bbs/notices" },
@@ -215,7 +215,7 @@ export default function ArticleDetailPage() {
           title: "IR",
           fontFamily: "montserrat !important",
           subtitle: "케이앤디에너젠의 IR 정보를 확인하세요",
-          backgroundImage: "/images/sub/privacy_bg.jpg",
+          backgroundImage: "/images/sub/privacy_bg.webp",
           menuItems: [
             { name: "PR", href: "/bbs/ir" },
             { name: "IR", href: "/bbs/ir" },
@@ -227,7 +227,7 @@ export default function ArticleDetailPage() {
           title: "PR",
           fontFamily: "montserrat !important",
           subtitle: "케이앤디에너젠의 최신 소식을 전해드립니다",
-          backgroundImage: "/images/sub/privacy_bg.jpg",
+          backgroundImage: "/images/sub/privacy_bg.webp",
           menuItems: [
             { name: "PR", href: "/bbs/resources" },
             { name: "뉴스/보도자료", href: "/bbs/resources" },
@@ -239,7 +239,7 @@ export default function ArticleDetailPage() {
           title: "게시판",
           fontFamily: "montserrat !important",
           subtitle: "게시판입니다",
-          backgroundImage: "/images/sub/privacy_bg.jpg",
+          backgroundImage: "/images/sub/privacy_bg.webp",
           menuItems: [
             { name: "게시판", href: `/bbs/${id}` },
             { name: "게시판", href: `/bbs/${id}` },

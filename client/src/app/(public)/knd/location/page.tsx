@@ -57,7 +57,7 @@ export default function CompanyPage() {
       <PageHeroBanner
         title="COMPANY"
         subtitle="K&D Energen의 위치를 소개합니다"
-        backgroundImage="/images/main/hero-image.jpg"
+        backgroundImage="/images/main/hero-image.webp"
         height="600px"
         menuType="custom"
         customMenuItems={companyMenuItems}

@@ -21,7 +21,7 @@ export const HERO_DATA: Record<string, HeroPageData> = {
   "/knd/company": {
     title: "COMPANY",
     subtitle: "K&D Energen을 소개합니다",
-    backgroundImage: "/images/main/hero-image.jpg",
+    backgroundImage: "/images/main/hero-image.webp",
     height: "600px",
     menuItems: [
       { name: "회사소개", href: "/knd/company" },
@@ -33,7 +33,7 @@ export const HERO_DATA: Record<string, HeroPageData> = {
   "/knd/organization": {
     title: "COMPANY",
     subtitle: "K&D Energen의 조직도를 소개합니다",
-    backgroundImage: "/images/main/hero-image.jpg",
+    backgroundImage: "/images/main/hero-image.webp",
     height: "600px",
     menuItems: [
       { name: "회사소개", href: "/knd/company" },
@@ -45,7 +45,7 @@ export const HERO_DATA: Record<string, HeroPageData> = {
   "/knd/location": {
     title: "COMPANY",
     subtitle: "K&D Energen의 위치를 소개합니다",
-    backgroundImage: "/images/main/hero-image.jpg",
+    backgroundImage: "/images/main/hero-image.webp",
     height: "600px",
     menuItems: [
       { name: "회사소개", href: "/knd/company" },
@@ -58,7 +58,7 @@ export const HERO_DATA: Record<string, HeroPageData> = {
   "/business/business": {
     title: "BUSINESS",
     subtitle: "K&D Energen의 사업을 소개합니다",
-    backgroundImage: "/images/sub/business_bg.jpg",
+    backgroundImage: "/images/sub/business_bg.webp",
     height: "600px",
     menuItems: [
       { name: "사업분야", href: "/business/business" },
@@ -70,7 +70,7 @@ export const HERO_DATA: Record<string, HeroPageData> = {
   "/business/process": {
     title: "BUSINESS",
     subtitle: "K&D Energen의 주요공정을 소개합니다",
-    backgroundImage: "/images/sub/business_bg.jpg",
+    backgroundImage: "/images/sub/business_bg.webp",
     height: "600px",
     menuItems: [
       { name: "사업분야", href: "/business/business" },
@@ -82,7 +82,7 @@ export const HERO_DATA: Record<string, HeroPageData> = {
   "/business/product": {
     title: "BUSINESS",
     subtitle: "K&D Energen의 주력 제품을 소개합니다",
-    backgroundImage: "/images/sub/business_bg.jpg",
+    backgroundImage: "/images/sub/business_bg.webp",
     height: "600px",
     menuItems: [
       { name: "사업분야", href: "/business/business" },
@@ -95,7 +95,7 @@ export const HERO_DATA: Record<string, HeroPageData> = {
   "/bbs": {
     title: "BOARD",
     subtitle: "K&D ENERGEN의 게시판입니다",
-    backgroundImage: "/images/sub/privacy_bg.jpg",
+    backgroundImage: "/images/sub/privacy_bg.webp",
     height: "600px",
     menuItems: [
       { name: "홈", href: "/" },
@@ -107,7 +107,7 @@ export const HERO_DATA: Record<string, HeroPageData> = {
   "/bbs/notices": {
     title: "PR",
     subtitle: "K&D ENERGEN의 공지사항을 확인하세요",
-    backgroundImage: "/images/sub/privacy_bg.jpg",
+    backgroundImage: "/images/sub/privacy_bg.webp",
     height: "600px",
     menuItems: [
       { name: "PR", href: "/bbs/notices" },
@@ -119,7 +119,7 @@ export const HERO_DATA: Record<string, HeroPageData> = {
   "/bbs/resources": {
     title: "PR",
     subtitle: "K&D ENERGEN의 최신 소식을 전해드립니다",
-    backgroundImage: "/images/sub/privacy_bg.jpg",
+    backgroundImage: "/images/sub/privacy_bg.webp",
     height: "600px",
     menuItems: [
       { name: "PR", href: "/bbs/resources" },
@@ -131,7 +131,7 @@ export const HERO_DATA: Record<string, HeroPageData> = {
   "/bbs/ir": {
     title: "IR",
     subtitle: "K&D ENERGEN의 IR 정보를 확인하세요",
-    backgroundImage: "/images/sub/privacy_bg.jpg",
+    backgroundImage: "/images/sub/privacy_bg.webp",
     height: "600px",
     menuItems: [
       { name: "IR", href: "/bbs/ir" },
@@ -149,7 +149,7 @@ export const HERO_DATA: Record<string, HeroPageData> = {
 export const DEFAULT_HERO_DATA: HeroPageData = {
   title: "K&D ENERGEN",
   subtitle: "친환경 에너지 화학기업",
-  backgroundImage: "/images/main/hero-image.jpg",
+  backgroundImage: "/images/main/hero-image.webp",
   height: "600px",
   menuItems: [
     { name: "홈", href: "/" },

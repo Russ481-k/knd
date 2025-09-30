@@ -455,7 +455,7 @@ export default function BoardPage({
           title: "PR",
           fontFamily: "montserrat !important",
           subtitle: "K&D ENERGEN의 공지사항을 확인하세요",
-          backgroundImage: "/images/sub/privacy_bg.jpg",
+          backgroundImage: "/images/sub/privacy_bg.webp",
           menuItems: [
             { name: "PR", href: "/bbs/notices" },
             { name: "공지사항", href: "/bbs/notices" },
@@ -466,7 +466,7 @@ export default function BoardPage({
           title: "IR",
           fontFamily: "montserrat !important",
           subtitle: "K&D ENERGEN의 IR 정보를 확인하세요",
-          backgroundImage: "/images/sub/privacy_bg.jpg",
+          backgroundImage: "/images/sub/privacy_bg.webp",
           menuItems: [
             { name: "IR", href: "/bbs/ir" },
             { name: "IR", href: "/bbs/ir" },
@@ -476,7 +476,7 @@ export default function BoardPage({
         return {
           title: "PR",
           subtitle: "K&D ENERGEN의 최신 소식을 전해드립니다",
-          backgroundImage: "/images/sub/privacy_bg.jpg",
+          backgroundImage: "/images/sub/privacy_bg.webp",
           menuItems: [
             { name: "PR", href: "/bbs/resources" },
             { name: "뉴스/보도자료", href: "/bbs/resources" },
@@ -486,7 +486,7 @@ export default function BoardPage({
         return {
           title: "게시판",
           subtitle: "게시판입니다",
-          backgroundImage: "/images/bbs/privacy_bg.jpg",
+          backgroundImage: "/images/bbs/privacy_bg.webp",
           menuItems: [
             { name: "PR", href: `/bbs/${currentPathId}` },
             { name: "게시판", href: `/bbs/${currentPathId}` },

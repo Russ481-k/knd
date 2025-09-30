@@ -64,7 +64,7 @@ export default function ProcessPage() {
       <PageHeroBanner
         title="BUSINESS"
         subtitle="K&D Energen의 사업 분야를 소개합니다"
-        backgroundImage="/images/sub/business_bg.jpg"
+        backgroundImage="/images/sub/business_bg.webp"
         height="600px"
         menuType="custom"
         customMenuItems={businessMenuItems}

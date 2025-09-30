@@ -68,7 +68,7 @@ export default function PrivacyPolicyPage() {
       <PageHeroBanner
         title="Privacy Policy"
         subtitle="K&D Energen의 개인정보취급방침을 소개합니다"
-        backgroundImage="/images/sub/privacy_bg.jpg"
+        backgroundImage="/images/sub/privacy_bg.webp"
         height="600px"
         menuType="custom"
         customMenuItems={businessMenuItems}

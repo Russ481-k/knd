@@ -52,7 +52,7 @@ export default function CompanyPage() {
       <PageHeroBanner
         title="COMPANY"
         subtitle="K&D Energen을 소개합니다"
-        backgroundImage="/images/main/hero-image.jpg"
+        backgroundImage="/images/main/hero-image.webp"
         height="600px"
         menuType="custom"
         customMenuItems={companyMenuItems}
@@ -132,7 +132,7 @@ export default function CompanyPage() {
               opacity={animations.companyImage ? 1 : 0}
             >
               <Image
-                src="/images/sub/company_bg.jpg"
+                src="/images/sub/company_bg.webp"
                 alt="케이앤디에너젠 회사 소개"
                 width="1300px"
                 height="500px"

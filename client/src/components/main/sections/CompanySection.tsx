@@ -339,7 +339,7 @@ export default function CompanySection({
       p={"150px 0"}
       position="relative"
       overflow="hidden"
-      backgroundImage="url('/images/main/section3.jpg')"
+      backgroundImage="url('/images/main/section3.webp')"
       backgroundSize="cover"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"

@@ -232,7 +232,7 @@ function AppContent() {
         cardsVisible={section4CardsVisible}
       />
 
-      <FinalSection backgroundImage="/images/main/section6_bg.jpg" />
+      <FinalSection backgroundImage="/images/main/section6_bg.webp" />
     </Box>
   );
 }
