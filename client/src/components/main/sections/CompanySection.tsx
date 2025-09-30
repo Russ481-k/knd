@@ -11,6 +11,9 @@ import {
   useEffect,
   Dispatch,
   SetStateAction,
+  useRef,
+  useCallback,
+  useMemo,
 } from "react";
 import { useRouter } from "next/navigation";
 
@@ -62,7 +65,7 @@ const CompanyCard = ({
     cursor: isCurrent ? "pointer" : "default",
     border: "none",
     borderRadius: { base: "15px", lg: "20px" },
-    transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+    transition: "transform 0.3s ease-out, opacity 0.3s ease-out, filter 0.3s ease-out",
     willChange: "transform, opacity, filter",
     backfaceVisibility: "hidden",
     overflow: "hidden",
@@ -73,16 +76,14 @@ const CompanyCard = ({
     cardStyles = {
       ...cardStyles,
       bg: "linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.95))",
-      filter: "none", // 블러 완전 제거
+      filter: "none",
       opacity: 1,
-      transform: "perspective(1000px) rotateY(0deg) scale(1.1)", // 기울기 없이 확대만
-      boxShadow:
-        "0 15px 25px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(74, 124, 213, 0.3), 0 0 25px rgba(74, 124, 213, 0.2)",
+      transform: "translate3d(0, 0, 0) scale(1.05)",
+      boxShadow: "0 8px 16px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(74, 124, 213, 0.2)",
       zIndex: 10,
       _hover: {
-        transform: "perspective(1000px) rotateY(0deg) scale(1.15)",
-        boxShadow:
-          "0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(74, 124, 213, 0.5), 0 0 30px rgba(74, 124, 213, 0.3)",
+        transform: "translate3d(0, -2px, 0) scale(1.08)",
+        boxShadow: "0 12px 20px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(74, 124, 213, 0.3)",
         "& .more-button": {
           opacity: 1,
           transform: "translateX(0)",
@@ -98,9 +99,9 @@ const CompanyCard = ({
     cardStyles = {
       ...cardStyles,
       bg: "rgba(255, 255, 255, 0.98)",
-      filter: "blur(6px)",
+      filter: "blur(2px)",
       opacity: 0.7,
-      transform: "perspective(1000px) rotateY(15deg) scale(0.95)",
+      transform: "translate3d(-10px, 0, 0) scale(0.95) rotateY(8deg)",
     };
   }
   // 다음 카드들
@@ -108,9 +109,9 @@ const CompanyCard = ({
     cardStyles = {
       ...cardStyles,
       bg: "rgba(255, 255, 255, 0.98)",
-      filter: "blur(6px)",
+      filter: "blur(2px)",
       opacity: 0.7,
-      transform: "perspective(1000px) rotateY(-15deg) scale(0.95)",
+      transform: "translate3d(10px, 0, 0) scale(0.95) rotateY(-8deg)",
     };
   }
   // 기본 (비활성) 카드
@@ -118,57 +119,23 @@ const CompanyCard = ({
     cardStyles = {
       ...cardStyles,
       bg: "rgba(255, 255, 255, 0.98)",
-      filter: "blur(6px)",
+      filter: "blur(2px)",
       opacity: 0.7,
-      transform: "perspective(1000px) rotateY(0deg) scale(0.95)",
+      transform: "translate3d(0, 0, 0) scale(0.95)",
     };
   }
 
-  // 공통 스타일 추가
+  // 공통 스타일 추가 (단순화)
   if (!isCurrent) {
     cardStyles = {
       ...cardStyles,
-      _before: {
-        content: '""',
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        bg: "linear-gradient(135deg, rgba(74, 124, 213, 0.05), transparent 60%)",
-        borderRadius: "20px",
-        opacity: 0,
-        transition: "opacity 0.3s ease",
-      },
       _hover: {
-        _before: {
-          opacity: 1,
-        },
+        filter: "blur(3px)",
+        opacity: 0.8,
         "& .more-button": {
           opacity: 0,
           transform: "translateX(0)",
         },
-        // The selector for the arrow is changed to target the last child of the .more-button
-        "& .more-button > p:last-of-type": {
-          transform: "translateX(5px)",
-        },
-      },
-    };
-  } else {
-    // 활성 카드용 _before 스타일
-    cardStyles = {
-      ...cardStyles,
-      _before: {
-        content: '""',
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        bg: "linear-gradient(135deg, rgba(74, 124, 213, 0.05), transparent 60%)",
-        borderRadius: "20px",
-        opacity: 0,
-        transition: "opacity 0.3s ease",
       },
     };
   }
@@ -252,7 +219,10 @@ export default function CompanySection({
   setCurrentCardIndex,
   cardsRef,
 }: CompanySectionProps) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, index: 0 });
+  const [dragOffset, setDragOffset] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // 애니메이션 상태 관리
   const [animations, setAnimations] = useState({
@@ -262,24 +232,44 @@ export default function CompanySection({
     cardsContainer: false,
   });
 
-  // 스크롤 이벤트 처리
+  // Intersection Observer로 애니메이션 트리거 (App.tsx와 통일)
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
+    if (!sectionRef.current) return;
 
-      // 각 애니메이션 트리거 지점 설정
-      setAnimations({
-        titleText: scrollY > 1700,
-        mainHeading: scrollY > 1800,
-        description: scrollY > 1900,
-        cardsContainer: scrollY > 2000,
-      });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const ratio = entry.intersectionRatio;
+            // 단계별 애니메이션 트리거
+            setAnimations({
+              titleText: ratio > 0.1,
+              mainHeading: ratio > 0.2,
+              description: ratio > 0.3,
+              cardsContainer: ratio > 0.4,
+            });
+          } else {
+            // 섹션이 벗어나면 애니메이션 리셋
+            setAnimations({
+              titleText: false,
+              mainHeading: false,
+              description: false,
+              cardsContainer: false,
+            });
+          }
+        });
+      },
+      {
+        threshold: [0.1, 0.2, 0.3, 0.4, 0.5],
+        rootMargin: "0px",
+      }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      observer.disconnect();
     };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // 초기 실행
-
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // 반응형 카드 너비 계산
@@ -287,9 +277,9 @@ export default function CompanySection({
   const cardSpacing = useBreakpointValue({ base: 30, md: 40, lg: 40 }) || 40; // mx 값 * 2
   const slideDistance = cardWidth + cardSpacing;
 
-  // 자동 슬라이드 기능
+  // 자동 슬라이드 기능 (드래그 중에만 정지)
   useEffect(() => {
-    if (!animations.cardsContainer || isHovered) return;
+    if (!animations.cardsContainer || isDragging) return;
 
     const interval = setInterval(() => {
       setCurrentCardIndex((prev: number) => (prev + 1) % companyCards.length);
@@ -299,7 +289,7 @@ export default function CompanySection({
   }, [
     companyCards.length,
     animations.cardsContainer,
-    isHovered,
+    isDragging,
     setCurrentCardIndex,
   ]);
 
@@ -308,14 +298,52 @@ export default function CompanySection({
     setCurrentCardIndex(index);
   };
 
-  // hover 이벤트 핸들러
-  const handleCardMouseEnter = () => {
-    setIsHovered(true);
-  };
+  // 드래그 이벤트 핸들러
+  const handleDragStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    setIsDragging(true);
+    setDragStart({ x: clientX, index: currentCardIndex });
+    setDragOffset(0);
+  }, [currentCardIndex]);
 
-  const handleCardMouseLeave = () => {
-    setIsHovered(false);
-  };
+  const handleDragMove = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) return;
+
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const offset = clientX - dragStart.x;
+    setDragOffset(offset);
+  }, [isDragging, dragStart.x]);
+
+  const handleDragEnd = useCallback(() => {
+    if (!isDragging) return;
+
+    const threshold = 80; // 드래그 임계값 (더 민감하게)
+
+    if (Math.abs(dragOffset) > threshold) {
+      if (dragOffset > 0 && currentCardIndex > 0) {
+        // 오른쪽으로 드래그 - 이전 카드
+        setCurrentCardIndex(currentCardIndex - 1);
+      } else if (dragOffset < 0 && currentCardIndex < companyCards.length - 1) {
+        // 왼쪽으로 드래그 - 다음 카드
+        setCurrentCardIndex(currentCardIndex + 1);
+      }
+    }
+
+    setIsDragging(false);
+    setDragOffset(0);
+  }, [isDragging, dragOffset, currentCardIndex, companyCards.length, setCurrentCardIndex]);
+
+  // 더미 이벤트 핸들러 (기존 컴포넌트 호환성 유지)
+  const handleCardMouseEnter = () => { };
+  const handleCardMouseLeave = () => { };
+
+  // transform 계산 최적화
+  const transformValue = useMemo(() => {
+    const baseOffset = currentCardIndex * slideDistance;
+    const dragOffsetValue = isDragging ? -dragOffset : 0;
+    const totalOffset = baseOffset + dragOffsetValue;
+    return `translate3d(-${totalOffset}px, 0, 0)`;
+  }, [currentCardIndex, slideDistance, isDragging, dragOffset]);
 
   const wrapperStyles: SystemStyleObject = {
     display: "flex",
@@ -327,8 +355,10 @@ export default function CompanySection({
     },
     width: "fit-content",
     minWidth: "100%",
-    transition: "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
-    transform: `translateX(-${currentCardIndex * slideDistance}px)`,
+    transition: isDragging ? "none" : "transform 0.3s ease-out",
+    transform: transformValue,
+    willChange: "transform",
+    cursor: isDragging ? "grabbing" : "grab",
   };
 
   return (
@@ -393,9 +423,9 @@ export default function CompanySection({
 
         <Text
           fontSize={{ base: "16px", md: "24px", lg: "24px" }}
-          mb={{base: "50px"}}
+          mb={{ base: "50px" }}
           textAlign="center"
-          transition="transform 0.8s 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s 0.4s cubic-bezier(0.2, 0.8, 0.2, 1)"
+          transition="transform 0.4s 0.2s ease-out, opacity 0.4s 0.2s ease-out"
           transform={
             animations.description ? "translateY(0)" : "translateY(50px)"
           }
@@ -413,13 +443,24 @@ export default function CompanySection({
           position="relative"
           overflow="hidden"
           ref={cardsRef}
-          transition="transform 0.8s 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)"
+          transition="transform 0.6s ease-out, opacity 0.6s ease-out"
           transform={
-            animations.cardsContainer ? "translateY(-30px)" : "translateY(0)"
+            animations.cardsContainer ? "translate3d(0, -20px, 0)" : "translate3d(0, 0, 0)"
           }
           opacity={animations.cardsContainer ? 1 : 0}
         >
-          <Box {...wrapperStyles}>
+          <Box
+            {...wrapperStyles}
+            ref={containerRef}
+            onMouseDown={handleDragStart}
+            onMouseMove={handleDragMove}
+            onMouseUp={handleDragEnd}
+            onMouseLeave={handleDragEnd}
+            onTouchStart={handleDragStart}
+            onTouchMove={handleDragMove}
+            onTouchEnd={handleDragEnd}
+            userSelect="none"
+          >
             {companyCards.map((card, index) => (
               <Box
                 key={card.id}

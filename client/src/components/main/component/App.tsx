@@ -59,38 +59,31 @@ function AppContent() {
   });
   const sortedMenus = sortMenus(menuResponse?.data || []);
 
-  // Section4 Intersection Observer
+  // Section4 Intersection Observer (최적화)
   useEffect(() => {
     if (!section4Ref.current) return;
 
-    let timeoutId: ReturnType<typeof setTimeout>;
     let hasAnimated = false;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (timeoutId) {
-            clearTimeout(timeoutId);
+          if (
+            !hasAnimated &&
+            entry.isIntersecting &&
+            entry.intersectionRatio > 0.2
+          ) {
+            setSection4Visible(true);
+            hasAnimated = true;
+          } else if (!entry.isIntersecting && entry.intersectionRatio < 0.1) {
+            setSection4Visible(false);
+            hasAnimated = false;
           }
-
-          timeoutId = setTimeout(() => {
-            if (
-              !hasAnimated &&
-              entry.isIntersecting &&
-              entry.intersectionRatio > 0.3
-            ) {
-              setSection4Visible(true);
-              hasAnimated = true;
-            } else if (!entry.isIntersecting && entry.intersectionRatio < 0.1) {
-              setSection4Visible(false);
-              hasAnimated = false;
-            }
-          }, 100);
         });
       },
       {
-        threshold: [0.1, 0.3, 0.5],
-        rootMargin: "-20px 0px -20px 0px",
+        threshold: [0.1, 0.2, 0.3, 0.4],
+        rootMargin: "0px",
       }
     );
 
@@ -98,13 +91,10 @@ function AppContent() {
 
     return () => {
       observer.disconnect();
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
     };
   }, []);
 
-  // Section4 Cards Intersection Observer
+  // Section4 Cards Intersection Observer (최적화)
   useEffect(() => {
     if (!section4CardsRef.current) return;
 
@@ -116,7 +106,7 @@ function AppContent() {
           if (
             !hasAnimated &&
             entry.isIntersecting &&
-            entry.intersectionRatio > 0.4
+            entry.intersectionRatio > 0.3
           ) {
             hasAnimated = true;
             setSection4CardsVisible(true);
@@ -127,7 +117,7 @@ function AppContent() {
         });
       },
       {
-        threshold: [0.1, 0.4, 0.6],
+        threshold: [0.1, 0.2, 0.3, 0.4],
         rootMargin: "0px",
       }
     );
@@ -153,7 +143,7 @@ function AppContent() {
       id: 1,
       title: "Business",
       subtitle: "사업분야",
-      backgroundImage: "/images/main/section4_1.jpg",
+      backgroundImage: "/images/main/section4_1.webp",
       textColor: "white",
       link: "/business/business",
     },
@@ -161,7 +151,7 @@ function AppContent() {
       id: 2,
       title: "Process",
       subtitle: "주요공정",
-      backgroundImage: "/images/main/section4_2.jpg",
+      backgroundImage: "/images/main/section4_2.webp",
       textColor: "white",
       link: "/business/process",
     },
@@ -169,7 +159,7 @@ function AppContent() {
       id: 3,
       title: "Product",
       subtitle: "제품소개",
-      backgroundImage: "/images/main/section4_3.jpg",
+      backgroundImage: "/images/main/section4_3.webp",
       textColor: "white",
       link: "/business/product",
     },

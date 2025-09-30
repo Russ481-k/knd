@@ -48,10 +48,10 @@ const NavButton: React.FC<any> = (props) => (
     border="2px solid"
     borderColor="rgba(255, 255, 255, 0.3)"
     color="white"
-    width={{base: "40px", md: "60px", lg: "60px"}}
-    height={{base: "40px", md: "60px", lg: "60px"}}
+    width={{ base: "40px", md: "60px", lg: "60px" }}
+    height={{ base: "40px", md: "60px", lg: "60px" }}
     borderRadius="50%"
-    fontSize={{base: "1rem", md: "1.5rem", lg: "1.5rem"}}
+    fontSize={{ base: "1rem", md: "1.5rem", lg: "1.5rem" }}
     cursor="pointer"
     zIndex={3}
     transition="all 0.3s ease"
@@ -137,10 +137,13 @@ const HeroSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentSlide((prev) => (prev + 1) % slides.length);
-        setIsTransitioning(false);
-      }, 500);
+      // requestAnimationFrame으로 최적화
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          setCurrentSlide((prev) => (prev + 1) % slides.length);
+          setIsTransitioning(false);
+        }, 400); // 500ms -> 400ms로 단축
+      });
     }, 6000);
 
     return () => clearInterval(interval);
@@ -149,10 +152,12 @@ const HeroSlider = () => {
   const goToSlide = (index: number) => {
     if (index !== currentSlide && !isTransitioning) {
       setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentSlide(index);
-        setIsTransitioning(false);
-      }, 500);
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          setCurrentSlide(index);
+          setIsTransitioning(false);
+        }, 400); // 500ms -> 400ms로 단축
+      });
     }
   };
 
@@ -228,7 +233,7 @@ const HeroSlider = () => {
           transition="all 0.8s cubic-bezier(0.4, 0, 0.2, 1)"
         >
           <Heading
-            fontSize={{base: "32px", md: "48px", lg: "64px"}}
+            fontSize={{ base: "32px", md: "48px", lg: "64px" }}
             fontWeight="700"
             mb="1.5rem"
             lineHeight="1.2"
@@ -238,7 +243,7 @@ const HeroSlider = () => {
             {currentSlideData.title}
           </Heading>
           <Text
-            fontSize={{base: "16px", md: "24px", lg: "24px"}}
+            fontSize={{ base: "16px", md: "24px", lg: "24px" }}
             fontWeight="300"
             opacity="0.9"
             textShadow="0 2px 10px rgba(0, 0, 0, 0.5)"

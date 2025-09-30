@@ -9,15 +9,23 @@ const Footer = () => {
   const router = useRouter();
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      if (window.pageYOffset > 300) {
-        setShowTopButton(true);
-      } else {
-        setShowTopButton(false);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (window.pageYOffset > 300) {
+            setShowTopButton(true);
+          } else {
+            setShowTopButton(false);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 

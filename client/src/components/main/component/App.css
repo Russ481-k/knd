@@ -1,15 +1,15 @@
-
-
 /* 아래로 이동하는 애니메이션 */
 @keyframes moveDown {
   0% {
     transform: translateY(0);
     opacity: 0.7;
   }
+
   50% {
     transform: translateY(10px);
     opacity: 1;
   }
+
   100% {
     transform: translateY(15px);
     opacity: 0.3;
@@ -21,6 +21,7 @@
   0% {
     box-shadow: 0 0 5px rgba(74, 124, 213, 0.3);
   }
+
   100% {
     box-shadow: 0 0 20px rgba(74, 124, 213, 0.6);
   }
@@ -32,84 +33,110 @@
     opacity: 0.3;
     transform: scale(1);
   }
+
   100% {
     opacity: 0.6;
     transform: scale(1.1);
   }
 }
 
-/* 우아한 떠다니는 애니메이션들 */
+/* 우아한 떠다니는 애니메이션들 - GPU 최적화 */
 @keyframes elegantFloat1 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
+
   25% {
-    transform: translate(20px, -15px) rotate(45deg) scale(1.05);
+    transform: translate3d(15px, -10px, 0) rotate(30deg) scale(1.02);
   }
+
   50% {
-    transform: translate(-10px, -25px) rotate(90deg) scale(0.95);
+    transform: translate3d(-8px, -18px, 0) rotate(60deg) scale(0.98);
   }
+
   75% {
-    transform: translate(-25px, 10px) rotate(135deg) scale(1.02);
+    transform: translate3d(-18px, 8px, 0) rotate(90deg) scale(1.01);
   }
 }
 
 @keyframes elegantFloat2 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
+
   33% {
-    transform: translate(-30px, 20px) rotate(60deg) scale(1.08);
+    transform: translate3d(-20px, 15px, 0) rotate(40deg) scale(1.04);
   }
+
   66% {
-    transform: translate(15px, -20px) rotate(120deg) scale(0.92);
+    transform: translate3d(12px, -15px, 0) rotate(80deg) scale(0.96);
   }
 }
 
 @keyframes elegantFloat3 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
+
   50% {
-    transform: translate(-20px, 30px) rotate(180deg) scale(1.1);
+    transform: translate3d(-15px, 20px, 0) rotate(120deg) scale(1.05);
   }
 }
 
 @keyframes elegantFloat4 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
+
   25% {
-    transform: translate(25px, -20px) rotate(30deg) scale(0.95);
+    transform: translate3d(18px, -15px, 0) rotate(25deg) scale(0.97);
   }
+
   50% {
-    transform: translate(-15px, -30px) rotate(90deg) scale(1.05);
+    transform: translate3d(-12px, -22px, 0) rotate(60deg) scale(1.03);
   }
+
   75% {
-    transform: translate(-30px, 15px) rotate(150deg) scale(0.98);
+    transform: translate3d(-22px, 12px, 0) rotate(100deg) scale(0.99);
   }
 }
 
 @keyframes elegantFloat5 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
+
   40% {
-    transform: translate(35px, -25px) rotate(72deg) scale(1.06);
+    transform: translate3d(25px, -18px, 0) rotate(50deg) scale(1.03);
   }
+
   80% {
-    transform: translate(-20px, 20px) rotate(144deg) scale(0.94);
+    transform: translate3d(-15px, 15px, 0) rotate(100deg) scale(0.97);
   }
 }
 
 @keyframes elegantFloat6 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
+
   30% {
-    transform: translate(-15px, 25px) rotate(54deg) scale(1.03);
+    transform: translate3d(-12px, 18px, 0) rotate(40deg) scale(1.02);
   }
+
   60% {
-    transform: translate(30px, -10px) rotate(108deg) scale(0.97);
+    transform: translate3d(22px, -8px, 0) rotate(80deg) scale(0.98);
   }
 }

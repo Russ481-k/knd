@@ -16,8 +16,9 @@ const AnimatedNumber = ({
   const unit = value.replace(/[0-9,.]/g, "");
 
   useEffect(() => {
+    let animationId: number;
+
     if (isVisible && targetValue > 0) {
-      let start = 0;
       const duration = 2000; // 2초 동안 애니메이션
       const startTime = performance.now();
 
@@ -29,16 +30,22 @@ const AnimatedNumber = ({
         setCurrentValue(animatedValue);
 
         if (progress < 1) {
-          requestAnimationFrame(animate);
+          animationId = requestAnimationFrame(animate);
         } else {
           setCurrentValue(targetValue); // 최종 값으로 설정
         }
       };
 
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
     } else if (!isVisible) {
       setCurrentValue(0); // 보이지 않으면 0으로 리셋
     }
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
   }, [isVisible, targetValue]);
 
   return (
@@ -102,7 +109,7 @@ const bondStyles: SystemStyleObject = {
     bg: "linear-gradient(90deg, rgba(74, 124, 213, 0.2), rgba(102, 185, 47, 0.2), rgba(74, 124, 213, 0.2))",
     borderRadius: "4px",
     zIndex: -1,
-    filter: "blur(4px)",
+    filter: "blur(2px)",
   },
 };
 
@@ -155,23 +162,32 @@ export default function ChemistrySection({
     statsContainer: false,
   });
 
-  // 스크롤 이벤트 처리
+  // 스크롤 이벤트 처리 (디바운싱 최적화)
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
+    let ticking = false;
 
-      // 각 애니메이션 트리거 지점 설정
-      setAnimations({
-        titleText: scrollY > 100,
-        mainHeading: scrollY > 120,
-        description: scrollY > 130,
-        spiderChart: scrollY > 140,
-        arrows: scrollY > 800,
-        statsContainer: scrollY > 1000,
-      });
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+
+          // 각 애니메이션 트리거 지점 설정
+          setAnimations({
+            titleText: scrollY > 100,
+            mainHeading: scrollY > 120,
+            description: scrollY > 130,
+            spiderChart: scrollY > 140,
+            arrows: scrollY > 800,
+            statsContainer: scrollY > 1000,
+          });
+
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // 초기 실행
 
     return () => window.removeEventListener("scroll", handleScroll);

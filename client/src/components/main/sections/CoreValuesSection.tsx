@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 
 const pulseGlow = keyframes`
   from {
-    box-shadow: 0 0 5px rgba(74, 124, 213, 0.5), 0 0 25px -10px rgba(74, 124, 213, 0.4);
+    opacity: 0.3;
   }
   to {
-    box-shadow: 0 0 20px rgba(74, 124, 213, 0.8), 0 0 40px 5px rgba(74, 124, 213, 0.6);
+    opacity: 0.5;
   }
 `;
 
@@ -60,10 +60,10 @@ export default function CoreValuesSection({
           textTransform="uppercase"
           fontFamily="Montserrat, sans-serif"
           style={{
-            transform: `translateY(${(1 - (isVisible ? 1 : 0)) * 50}px)`,
+            transform: `translate3d(0, ${(1 - (isVisible ? 1 : 0)) * 50}px, 0)`,
             opacity: isVisible ? 1 : 0,
-            transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
-            transitionDelay: isVisible ? "0.1s" : "0s",
+            transition: "transform 0.4s ease-out, opacity 0.4s ease-out",
+            transitionDelay: isVisible ? "0.05s" : "0s",
           }}
         >
           K&D ENERGEN
@@ -76,9 +76,9 @@ export default function CoreValuesSection({
           lineHeight="1.2"
           mb="20px"
           style={{
-            transform: `translateY(${(1 - (isVisible ? 1 : 0)) * 50}px)`,
+            transform: `translate3d(0, ${(1 - (isVisible ? 1 : 0)) * 50}px, 0)`,
             opacity: isVisible ? 1 : 0,
-            transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+            transition: "transform 0.4s ease-out, opacity 0.4s ease-out",
             transitionDelay: isVisible ? "0.3s" : "0s",
           }}
         >
@@ -97,9 +97,9 @@ export default function CoreValuesSection({
           textAlign="center"
           mb="50px"
           style={{
-            transform: `translateY(${(1 - (isVisible ? 1 : 0)) * 50}px)`,
+            transform: `translate3d(0, ${(1 - (isVisible ? 1 : 0)) * 50}px, 0)`,
             opacity: isVisible ? 1 : 0,
-            transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+            transition: "transform 0.4s ease-out, opacity 0.4s ease-out",
             transitionDelay: isVisible ? "0.5s" : "0s",
           }}
         >
@@ -136,49 +136,48 @@ export default function CoreValuesSection({
               backgroundPosition: "center",
               bgRepeat: "no-repeat",
               cursor: "pointer",
-              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
               transformStyle: "preserve-3d",
-              willChange: "transform",
+              willChange: cardsVisible ? "transform" : "auto",
 
               // Default transition and transform state
               opacity: cardsVisible ? 1 : 0,
               transform: cardsVisible
-                ? "translateY(0) scale(1) rotateZ(0deg)"
-                : "translateY(80px) scale(0.6) rotateZ(-10deg)",
-              transition: "all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
-              transitionDelay: `${index * 0.2}s`,
-              filter: cardsVisible
-                ? "drop-shadow(0 20px 40px rgba(0,0,0,0.15))"
-                : "none",
+                ? "translate3d(0, 0, 0) scale(1)"
+                : "translate3d(0, 30px, 0) scale(0.95)",
+              transition: "transform 0.4s ease-out, opacity 0.4s ease-out",
+              transitionDelay: `${index * 0.03}s`,
+              boxShadow: cardsVisible
+                ? "0 8px 24px rgba(0, 0, 0, 0.15)"
+                : "0 4px 12px rgba(0, 0, 0, 0.1)",
 
               // Individual card styling
               borderTopLeftRadius:
                 index === 0
                   ? { base: "20px", md: "20px" }
                   : index === 2
-                  ? { base: "20px", md: "0" }
-                  : "0",
+                    ? { base: "20px", md: "0" }
+                    : "0",
 
               borderBottomLeftRadius:
                 index === 0
                   ? { base: "20px", md: "20px" }
                   : index === 2
-                  ? { base: "20px", md: "0" }
-                  : "0",
+                    ? { base: "20px", md: "0" }
+                    : "0",
 
               borderTopRightRadius:
                 index === 2
                   ? { base: "0", md: "20px" }
                   : index === 1
-                  ? { base: "20px", md: "0" }
-                  : "0",
+                    ? { base: "20px", md: "0" }
+                    : "0",
 
               borderBottomRightRadius:
                 index === 2
                   ? { base: "0", md: "20px" }
                   : index === 1
-                  ? { base: "20px", md: "0" }
-                  : "0",
+                    ? { base: "20px", md: "0" }
+                    : "0",
 
               // Pseudo-elements and hover effects
               _before: {
@@ -190,46 +189,35 @@ export default function CoreValuesSection({
                 bottom: 0,
                 bg: "linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0, 0, 0, 0.7) 100%)",
                 opacity: 1,
-                transition: "opacity 0.3s ease",
+                transition: "background 0.2s ease-out",
               },
               _hover: {
-                transform:
-                  "translateY(-15px) scale(1.08) rotateY(2deg) !important",
+                transform: "translate3d(0, -4px, 0) scale(1.01)",
                 zIndex: 10,
+                boxShadow: "0 12px 32px rgba(0, 0, 0, 0.2)",
+                transition: "all 0.15s ease-out",
                 _before: {
-                  bg: "linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.5) 100%)",
-                },
-                "& .card-content": {
-                  transform: "translateY(-10px) translateZ(20px)",
-                },
-                "& .card-title": {
-                  transform: "translateY(-5px)",
-                  textShadow: "0 5px 15px rgba(0,0,0,0.3)",
-                },
-                "& .card-subtitle": {
-                  transform: "translateY(-3px)",
-                  textShadow: "0 3px 10px rgba(0,0,0,0.2)",
-                },
-                _after: {
-                  animationDuration: "0.5s",
+                  bg: "linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.6) 100%)",
+                  transition: "background 0.15s ease-out",
                 },
               },
               _after: {
                 content: '""',
                 position: "absolute",
                 top: 0,
-                left: "-5px",
-                right: "-5px",
-                bottom: "-5px",
+                left: "-1px",
+                right: "-1px",
+                bottom: "-1px",
                 borderRadius: "inherit",
                 zIndex: -1,
-                opacity: cardsVisible ? 1 : 0,
-                transition: "opacity 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                opacity: cardsVisible ? 0.4 : 0,
+                transition: "opacity 0.4s ease-out",
                 animation: cardsVisible
-                  ? `${pulseGlow} 2s ease-in-out infinite alternate`
+                  ? `${pulseGlow} 6s ease-in-out infinite alternate`
                   : "none",
-                willChange: "box-shadow",
-                transform: "translateZ(0)",
+                willChange: cardsVisible ? "opacity" : "auto",
+                transform: "translate3d(0, 0, 0)",
+                boxShadow: "0 0 4px rgba(74, 124, 213, 0.15)",
               },
             };
 
@@ -240,33 +228,36 @@ export default function CoreValuesSection({
                 onClick={() => handleCardClick(card.link)}
               >
                 <Box
+                  className="card-content"
                   zIndex={1}
                   position="relative"
                   padding="2rem"
-                  transition="all 0.4s ease"
-                  transform="translateY(10px)"
+                  transition="transform 0.15s ease-out"
+                  transform="translate3d(0, 8px, 0)"
                   mb="10px"
                 >
                   <Heading
+                    className="card-title"
                     as="h3"
                     fontSize={{ base: "18px", md: "24px", xl: "36px" }}
                     fontWeight="700"
                     fontFamily="Montserrat, sans-serif !important"
                     textShadow="0 2px 4px rgba(0, 0, 0, 0.5)"
-                    transition="all 0.4s ease"
+                    transition="transform 0.15s ease-out, text-shadow 0.15s ease-out"
                     color="white"
                     mb={{ md: "0", xl: "10px" }}
                   >
                     {card.title}
                   </Heading>
                   <Text
+                    className="card-subtitle"
                     color="white"
                     fontSize={{ base: "14px", md: "16px", xl: "24px" }}
                     fontWeight="400"
                     marginBottom="0"
                     opacity="0.9"
                     textShadow="0 1px 2px rgba(0, 0, 0, 0.5)"
-                    transition="all 0.4s ease"
+                    transition="transform 0.15s ease-out, text-shadow 0.15s ease-out"
                   >
                     {card.subtitle}
                   </Text>
