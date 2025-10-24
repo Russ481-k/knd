@@ -1,1 +1,80 @@
 client/.next.old
+
+# Node
+node_modules/
+**/node_modules/
+
+# Next.js build outputs
+.next/
+out/
+build/
+.turbo/
+.cache/
+
+# Logs & coverage
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+coverage/
+.eslintcache
+
+# Env files (보안 중요!)
+**/.env
+**/.env.*
+*.env
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+client/.env
+server/.env
+
+# 보안 관련 파일들
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+*.jks
+*.keystore
+secrets/
+secrets.json
+credentials.json
+*.credentials
+config/secrets.*
+
+# 데이터베이스 관련
+*.sql
+*.db
+*.sqlite
+*.sqlite3
+database.yml
+db/seeds.rb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Nginx certs (keep folder, ignore files)
+nginx/certs/*
+!nginx/certs/.gitkeep
+
+# Docker 관련 민감 정보
+docker-compose.yml
+docker-compose.*.yml
+docker-compose.override.yml
+.dockerignore
+
+# 로그 파일
+*.log
+logs/
