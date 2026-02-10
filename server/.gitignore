@@ -79,3 +79,9 @@ Thumbs.db
 
 # Upload
 uploads/
+
+# Docker 관련 민감 정보
+docker-compose.yml
+docker-compose.*.yml
+docker-compose.override.yml
+.dockerignore
