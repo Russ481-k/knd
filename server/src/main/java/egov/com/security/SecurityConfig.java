@@ -5,6 +5,7 @@ import egov.com.jwt.JwtRequestFilter;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.annotation.Order;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -115,6 +116,23 @@ public class SecurityConfig {
 		}
 
 		return new OrRequestMatcher(matchers);
+	}
+
+	@Bean
+	@Order(0)
+	public SecurityFilterChain fileViewFilterChain(HttpSecurity http) throws Exception {
+		http
+				.requestMatchers(matchers -> matchers.antMatchers("/api/v1/cms/file/public/view/**"))
+				.headers().frameOptions().disable()
+				.and()
+				.csrf().disable()
+				.authorizeHttpRequests(authz -> authz.anyRequest().permitAll());
+
+		if (corsEnabled) {
+			http.cors().configurationSource(corsConfigurationSource());
+		}
+
+		return http.build();
 	}
 
 	@Bean

@@ -358,15 +358,12 @@ public class FileController {
             }
 
             HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.parseMediaType(contentType));
+            headers.setContentType(MediaType.parseMediaType(contentType.split(";")[0].trim()));
 
             String encodedFileName = URLEncoder.encode(fileInfo.getOriginName(), StandardCharsets.UTF_8.toString()).replaceAll("\\+", "%20");
-
-            if (inlineDisposition) {
-                headers.setContentDispositionFormData("inline", encodedFileName);
-            } else {
-                headers.setContentDispositionFormData("attachment", encodedFileName);
-            }
+            String disposition = inlineDisposition ? "inline" : "attachment";
+            headers.set(HttpHeaders.CONTENT_DISPOSITION,
+                    disposition + "; filename=\"" + encodedFileName + "\"; filename*=UTF-8''" + encodedFileName);
             
             // Add Cache-Control header to prevent caching of sensitive files if needed, or allow caching for public images
             // For example, for public images that change infrequently:

@@ -52,7 +52,8 @@ public class FileServiceImpl implements FileService {
 
         for (MultipartFile file : files) {
             if (file != null && !file.isEmpty()) {
-                String originalFilename = file.getOriginalFilename();
+                String originalFilename = java.text.Normalizer.normalize(
+                        file.getOriginalFilename(), java.text.Normalizer.Form.NFC);
                 String ext = FilenameUtils.getExtension(originalFilename);
                 String uuidFileName = generateUUIDFileName(ext);
 

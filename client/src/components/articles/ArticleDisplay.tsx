@@ -307,6 +307,38 @@ export const ArticleDisplay: React.FC<ArticleDisplayProps> = ({
         article.attachments &&
         article.attachments.length > 0 && (
           <Box pt={4} borderTopWidth="1px" borderColor="gray.200" mt={8} px={0}>
+            {/* PDF 인라인 뷰어 */}
+            {article.attachments
+              .filter(
+                (file: FileDto) =>
+                  file &&
+                  (file.mimeType === "application/pdf" ||
+                    file.ext?.toLowerCase() === "pdf")
+              )
+              .map((file: FileDto) => {
+                const viewUrl = file.downloadUrl?.replace(
+                  "/download/",
+                  "/view/"
+                ) + "#toolbar=0&navpanes=0&view=FitH";
+                return (
+                  <Box key={`pdf-viewer-${file.fileId}`} mb={6}>
+                    <Text fontWeight="bold" mb={2} fontSize="sm">
+                      {file.originName}
+                    </Text>
+                    <iframe
+                      src={viewUrl}
+                      title={file.originName}
+                      style={{
+                        width: "100%",
+                        height: "800px",
+                        border: "1px solid #E2E8F0",
+                        borderRadius: "6px",
+                      }}
+                    />
+                  </Box>
+                );
+              })}
+
             <Text fontWeight="bold" mb={3}>
               첨부파일 ({article.attachments.length})
             </Text>

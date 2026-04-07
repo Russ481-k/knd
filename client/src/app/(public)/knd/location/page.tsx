@@ -197,7 +197,7 @@ export default function CompanyPage() {
                     ADDRESS
                   </Text>
                   <Text fontSize="16px" color="#666" lineHeight="1.6">
-                  울산광역시 울주군 온산읍 산암리 148
+                    울산광역시 울주군 온산읍 산암로 246
                   </Text>
                 </Box>
                 <Box>
@@ -223,15 +223,15 @@ export default function CompanyPage() {
                       대표전화
                     </Text>
                     <Text fontSize="16px" color="#4A7CD5" fontWeight="medium">
-                    052-237-8190
+                      052-237-8190
                     </Text>
                   </Box>
                   <Box>
                     <Text fontSize="16px" fontWeight="bold" color="#333" mb={2}>
-                    FAX
+                      FAX
                     </Text>
                     <Text fontSize="16px" color="#4A7CD5" fontWeight="medium">
-                    052-237-8191
+                      052-237-8191
                     </Text>
                   </Box>
                 </Grid>

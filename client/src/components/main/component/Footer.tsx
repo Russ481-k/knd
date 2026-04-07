@@ -90,7 +90,7 @@ const Footer = () => {
               주소
             </Text>
             <Text color="#666">
-              울산광역시 울주군 온산읍 산암리 148, 케이앤디에너젠(주)
+              울산광역시 울주군 온산읍 산암로 246, 케이앤디에너젠(주)
             </Text>
           </Box>
           <Box display="flex" alignItems="center" gap="8px" fontSize="0.9rem">
@@ -116,7 +116,7 @@ const Footer = () => {
               대표자
             </Text>
             <Text color="#666">
-              장선우, 김기철
+              강선재, 주우원
             </Text>
           </Box>
         </Box>
