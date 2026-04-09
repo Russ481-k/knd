@@ -52,10 +52,12 @@ export default function HistoryPage() {
   const years = [2026, 2025, 2024, 2023];
   const historyData = {
     2026: [
-      { month: "06", content: "에쓰오일㈜ Shaheen Project 수소 공급(예정)" },
-      { month: "03", content: "수소 생산 시설 완공(예정)" },
+      { month: "08", content: "에쓰오일(주) Shaheen Project 수소 공급" },
+      { month: "06", content: "수소 생산 시설 완공" },
+      { month: "05", content: "본사 신축 행정동 완공" },
     ],
     2025: [
+      { month: "12", content: "공동대표이사 변경(김기철, 장선우 → 강선재, 주우원)" },
       { month: "10", content: "본사 행정동 완공" },
     ],
     2024: [
