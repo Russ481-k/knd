@@ -231,7 +231,7 @@ export default function CompanyPage() {
                       FAX
                     </Text>
                     <Text fontSize="16px" color="#4A7CD5" fontWeight="medium">
-                      052-237-8191
+                      052-279-8199
                     </Text>
                   </Box>
                 </Grid>

@@ -58,7 +58,6 @@ export default function HistoryPage() {
     ],
     2025: [
       { month: "12", content: "공동대표이사 변경(김기철, 장선우 → 강선재, 주우원)" },
-      { month: "10", content: "본사 행정동 완공" },
     ],
     2024: [
       { month: "10", content: "독일 기업 Linde 회사와 Lisence 기술 계약 체결 (PSA Unit)" },

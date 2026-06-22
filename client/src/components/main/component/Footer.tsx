@@ -103,7 +103,7 @@ const Footer = () => {
             <Text fontWeight="600" color="#333">
               FAX :
             </Text>
-            <Text color="#666">052-237-8191</Text>
+            <Text color="#666">052-279-8199</Text>
           </Box>
           <Box display="flex" alignItems="center" gap="8px" fontSize="0.9rem">
             <Text fontWeight="600" color="#333">
